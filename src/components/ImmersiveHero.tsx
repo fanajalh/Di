@@ -10,7 +10,7 @@ const Marquee = () => {
     <div className="w-full h-48 md:h-64 relative overflow-hidden my-24 bg-transparent flex items-center justify-center">
       {/* Row 2: Kiri ke Kanan (Pita Abu Gelap, diputar berlawanan arah jarum jam) */}
       <div 
-        className="absolute w-[120%] -left-[10%] py-4 bg-[#0A0A0A] border-y border-[#2A2A2A] text-[#808080] font-mono text-xs tracking-widest uppercase overflow-hidden shadow-lg select-none"
+        className="absolute w-[120%] -left-[10%] py-4 bg-[#0A0A0A] border-y border-[#2A2A2A] text-[#9A9A9A] font-mono text-xs tracking-widest uppercase overflow-hidden shadow-lg select-none"
         style={{ transform: 'rotate(-3deg)' }}
       >
         <motion.div 
@@ -21,13 +21,13 @@ const Marquee = () => {
           {[...Array(12)].map((_, i) => (
             <div key={i} className="flex items-center gap-10">
               <span>Smart Lock Access</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#606060]"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#7A7A7A]"></span>
               <span>High Speed Internet</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#606060]"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#7A7A7A]"></span>
               <span>24/7 Security System</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#606060]"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#7A7A7A]"></span>
               <span>Premium Boarding Rooms</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#606060]"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#7A7A7A]"></span>
             </div>
           ))}
         </motion.div>
@@ -35,7 +35,7 @@ const Marquee = () => {
 
       {/* Row 1: Kanan ke Kiri (Pita Abu Terang, diputar searah jarum jam) */}
       <div 
-        className="absolute w-[120%] -left-[10%] py-4 bg-[#0A0A0A] border-y border-[#2A2A2A] text-[#A3A3A3] font-mono text-xs tracking-widest uppercase overflow-hidden shadow-2xl select-none z-10"
+        className="absolute w-[120%] -left-[10%] py-4 bg-[#0A0A0A] border-y border-[#2A2A2A] text-[#B0B0B0] font-mono text-xs tracking-widest uppercase overflow-hidden shadow-2xl select-none z-10"
         style={{ transform: 'rotate(3deg)' }}
       >
         <motion.div 
@@ -46,13 +46,13 @@ const Marquee = () => {
           {[...Array(12)].map((_, i) => (
             <div key={i} className="flex items-center gap-10">
               <span>Di Exclusive</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#606060]"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#7A7A7A]"></span>
               <span>Modern Minimalist Living</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#606060]"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#7A7A7A]"></span>
               <span>No Hidden Fees</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#606060]"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#7A7A7A]"></span>
               <span>Verified Listings Only</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#606060]"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#7A7A7A]"></span>
             </div>
           ))}
         </motion.div>
@@ -74,9 +74,9 @@ const FAQ = () => {
   return (
     <div className="max-w-3xl mx-auto px-8 py-20">
       <div className="mb-12 text-left">
-        <p className="text-[#808080] font-mono text-xs tracking-[0.2em] uppercase mb-3">Support</p>
+        <p className="text-[#9A9A9A] font-mono text-xs tracking-[0.2em] uppercase mb-3">Support</p>
         <h2 className="text-3xl font-light text-white mb-4">Pertanyaan yang Sering Diajukan</h2>
-        <div className="w-16 h-[1px] bg-[#606060]"></div>
+        <div className="w-16 h-[1px] bg-[#7A7A7A]"></div>
       </div>
       <div className="space-y-0">
         {faqs.map((faq, i) => (
@@ -88,8 +88,8 @@ const FAQ = () => {
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
               className="w-full text-left py-5 flex items-center justify-between gap-4 cursor-pointer"
             >
-              <h3 className="text-sm font-medium text-[#B0B0B0] group-hover:text-white transition-colors">{faq.q}</h3>
-              <ChevronDown className={`w-4 h-4 text-[#808080] shrink-0 transition-transform duration-200 ${openIndex === i ? 'rotate-180' : ''}`} />
+              <h3 className="text-sm font-medium text-[#C0C0C0] group-hover:text-white transition-colors">{faq.q}</h3>
+              <ChevronDown className={`w-4 h-4 text-[#9A9A9A] shrink-0 transition-transform duration-200 ${openIndex === i ? 'rotate-180' : ''}`} />
             </button>
             {openIndex === i && (
               <motion.div 
@@ -97,7 +97,7 @@ const FAQ = () => {
                 animate={{ opacity: 1, height: 'auto' }}
                 className="pb-5"
               >
-                <p className="text-sm text-[#949494] leading-relaxed pl-0">{faq.a}</p>
+                <p className="text-sm text-[#B0B0B0] leading-relaxed pl-0">{faq.a}</p>
               </motion.div>
             )}
           </div>
@@ -115,13 +115,13 @@ const DownloadAPK = () => {
         <div className="absolute top-0 right-0 w-64 h-64 bg-[#1C1C1C] blur-[80px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
         
         <div className="max-w-xl relative z-10">
-          <p className="text-[#808080] font-mono text-xs tracking-[0.25em] uppercase mb-4 flex items-center gap-2">
+          <p className="text-[#9A9A9A] font-mono text-xs tracking-[0.25em] uppercase mb-4 flex items-center gap-2">
             <Smartphone className="w-4 h-4" /> Di Mobile App
           </p>
           <h2 className="text-3xl md:text-5xl font-light text-white mb-6 leading-tight font-display">
-            Cari & Pesan Kost <br /> <span className="font-semibold text-[#B0B0B0]">Lebih Cepat.</span>
+            Cari & Pesan Kost <br /> <span className="font-semibold text-[#C0C0C0]">Lebih Cepat.</span>
           </h2>
-          <p className="text-[#949494] leading-relaxed mb-8">
+          <p className="text-[#B0B0B0] leading-relaxed mb-8">
             Dapatkan pengalaman terbaik mencari kos premium idaman Anda langsung dari genggaman. Pantau tagihan, ajukan keluhan, dan perpanjang sewa hanya dengan satu ketukan.
           </p>
           <button className="flex items-center gap-3 bg-white text-black px-8 py-4 rounded-xl font-bold hover:bg-[#B0B0B0] transition-colors cursor-pointer">
@@ -194,15 +194,17 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
   
   return (
     <div className="w-full bg-[#0A0A0A] font-sans overflow-hidden">
+      {/* Visually hidden h1 for heading hierarchy / accessibility */}
+      <h1 className="sr-only">Di - Platform Sewa Kost Premium Indonesia</h1>
       {/* Top Navbar overlay */}
       <div className="w-full p-6 md:p-10 flex items-center justify-between">
         <div className="font-semibold tracking-[0.25em] text-white text-sm uppercase font-display">
           Di
         </div>
-        <div className="hidden md:flex items-center gap-8 font-medium text-xs tracking-widest uppercase text-[#808080]">
-          <button onClick={onExploreClick} className="hover:text-white transition-colors animate-pulse duration-1000 cursor-pointer">Catalog</button>
-          <a href="#faq-section" className="hover:text-white transition-colors">FAQ</a>
-          <a href="#download-section" className="hover:text-white transition-colors">App</a>
+        <div className="hidden md:flex items-center gap-8 font-medium text-xs tracking-widest uppercase text-[#9A9A9A]">
+          <button onClick={onExploreClick} className="hover:text-white transition-colors animate-pulse duration-1000 cursor-pointer min-h-[48px] min-w-[48px] flex items-center">Catalog</button>
+          <a href="#faq-section" className="hover:text-white transition-colors min-h-[48px] flex items-center">FAQ</a>
+          <a href="#download-section" className="hover:text-white transition-colors min-h-[48px] flex items-center">App</a>
         </div>
       </div>
 
@@ -220,7 +222,7 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
         <div className="lg:col-span-7 flex flex-col justify-center relative z-10 text-left">
           <motion.p 
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-[#808080] font-mono text-xs tracking-[0.25em] uppercase mb-6"
+            className="text-[#9A9A9A] font-mono text-xs tracking-[0.25em] uppercase mb-6"
           >
             Premium Living Experience
           </motion.p>
@@ -228,14 +230,15 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
             className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[0.95] mb-8 text-white font-display"
+            aria-label="Elegance in Every Square Meter"
           >
             Elegance in <br />
-            Every <span className="font-semibold text-[#B0B0B0]">Square Meter.</span>
+            Every <span className="font-semibold text-[#C0C0C0]">Square Meter.</span>
           </motion.h1>
           
           <motion.p 
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-sm text-[#949494] max-w-lg mb-10 leading-relaxed font-light"
+            className="text-sm text-[#B0B0B0] max-w-lg mb-10 leading-relaxed font-light"
           >
             Discover meticulously designed modular spaces that adapt to your lifestyle. Simplicity meets sophisticated comfort.
           </motion.p>
@@ -246,13 +249,13 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
             className="flex flex-col sm:flex-row gap-3 mb-12 max-w-xl"
           >
             <div className="flex-1 bg-[#141414] border border-[#2A2A2A] rounded-xl px-5 py-3.5 flex items-center gap-3">
-              <Search className="w-4 h-4 text-[#808080]" />
+              <Search className="w-4 h-4 text-[#9A9A9A]" />
               <input
                 type="text"
                 placeholder="Cari lokasi atau nama kost..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="flex-1 bg-transparent text-sm text-white outline-none placeholder:text-[#606060] font-light"
+                className="flex-1 bg-transparent text-sm text-white outline-none placeholder:text-[#7A7A7A] font-light"
               />
             </div>
             <button
@@ -271,15 +274,15 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
           >
             <div className="border-t border-[#2A2A2A] pt-4">
               <p className="text-2xl font-semibold text-white font-display">120+</p>
-              <p className="text-[10px] text-[#808080] uppercase tracking-wider font-mono mt-1">Properti</p>
+              <p className="text-[10px] text-[#9A9A9A] uppercase tracking-wider font-mono mt-1">Properti</p>
             </div>
             <div className="border-t border-[#2A2A2A] pt-4">
               <p className="text-2xl font-semibold text-white font-display">92.4%</p>
-              <p className="text-[10px] text-[#808080] uppercase tracking-wider font-mono mt-1">Okupansi</p>
+              <p className="text-[10px] text-[#9A9A9A] uppercase tracking-wider font-mono mt-1">Okupansi</p>
             </div>
             <div className="border-t border-[#2A2A2A] pt-4">
               <p className="text-2xl font-semibold text-white font-display">4.9 ★</p>
-              <p className="text-[10px] text-[#808080] uppercase tracking-wider font-mono mt-1">Rating</p>
+              <p className="text-[10px] text-[#9A9A9A] uppercase tracking-wider font-mono mt-1">Rating</p>
             </div>
           </motion.div>
         </div>
@@ -338,7 +341,7 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
                               initial={{ opacity: 0, y: 15 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: 0.3, duration: 0.5 }}
-                              className="text-xs text-[#A3A3A3] font-light leading-relaxed max-w-sm"
+                              className="text-xs text-[#B0B0B0] font-light leading-relaxed max-w-sm"
                             >
                               {banner.subtitle}
                             </motion.p>
@@ -377,7 +380,7 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
         {/* Scroll indicator */}
         <motion.div 
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 1.2 }}
-          className="absolute bottom-6 left-8 md:left-24 text-[#606060] flex items-center gap-2 text-xs font-mono uppercase tracking-widest z-10"
+          className="absolute bottom-6 left-8 md:left-24 text-[#7A7A7A] flex items-center gap-2 text-xs font-mono uppercase tracking-widest z-10"
         >
           <span>Scroll</span>
           <ChevronDown className="w-4 h-4 animate-bounce" />
@@ -387,19 +390,19 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
       {/* Features Strip */}
       <div className="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-[#2A2A2A] text-left">
         <div className="p-6 bg-[#141414] border border-[#2A2A2A] rounded-xl hover:border-[#3A3A3A] transition-colors group">
-          <Shield className="w-5 h-5 text-[#949494] mb-4 group-hover:text-white transition-colors" />
+          <Shield className="w-5 h-5 text-[#B0B0B0] mb-4 group-hover:text-white transition-colors" />
           <div className="text-sm font-semibold text-white mb-2 font-display">Terverifikasi</div>
-          <p className="text-xs text-[#808080] leading-relaxed">Setiap properti melewati proses verifikasi ketat untuk memastikan kenyamanan hunian Anda.</p>
+          <p className="text-xs text-[#9A9A9A] leading-relaxed">Setiap properti melewati proses verifikasi ketat untuk memastikan kenyamanan hunian Anda.</p>
         </div>
         <div className="p-6 bg-[#141414] border border-[#2A2A2A] rounded-xl hover:border-[#3A3A3A] transition-colors group">
-          <Zap className="w-5 h-5 text-[#949494] mb-4 group-hover:text-white transition-colors" />
+          <Zap className="w-5 h-5 text-[#B0B0B0] mb-4 group-hover:text-white transition-colors" />
           <div className="text-sm font-semibold text-white mb-2 font-display">Booking Instan</div>
-          <p className="text-xs text-[#808080] leading-relaxed">Proses pemesanan cepat dan transparan. Survey, bayar, dan pindah tanpa ribet.</p>
+          <p className="text-xs text-[#9A9A9A] leading-relaxed">Proses pemesanan cepat dan transparan. Survey, bayar, dan pindah tanpa ribet.</p>
         </div>
         <div className="p-6 bg-[#141414] border border-[#2A2A2A] rounded-xl hover:border-[#3A3A3A] transition-colors group">
-          <Users className="w-5 h-5 text-[#949494] mb-4 group-hover:text-white transition-colors" />
+          <Users className="w-5 h-5 text-[#B0B0B0] mb-4 group-hover:text-white transition-colors" />
           <div className="text-sm font-semibold text-white mb-2 font-display">Chat Langsung</div>
-          <p className="text-xs text-[#808080] leading-relaxed">Hubungi pemilik kost langsung melalui chat untuk tanya ketersediaan dan negosiasi.</p>
+          <p className="text-xs text-[#9A9A9A] leading-relaxed">Hubungi pemilik kost langsung melalui chat untuk tanya ketersediaan dan negosiasi.</p>
         </div>
       </div>
 
@@ -410,14 +413,14 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-10 border-b border-[#2A2A2A] pb-6 text-left">
             <div>
-              <p className="text-[#808080] font-mono text-xs tracking-[0.2em] uppercase mb-2">Our Best Units</p>
+              <p className="text-[#9A9A9A] font-mono text-xs tracking-[0.2em] uppercase mb-2">Our Best Units</p>
               <h2 className="text-3xl md:text-4xl font-light tracking-tight text-white font-display">
-                Kamar <span className="font-semibold text-[#B0B0B0]">Pilihan Terbaik.</span>
+                Kamar <span className="font-semibold text-[#C0C0C0]">Pilihan Terbaik.</span>
               </h2>
             </div>
             <button 
               onClick={onExploreClick}
-              className="mt-4 sm:mt-0 flex items-center gap-2 text-sm text-[#808080] hover:text-white transition-colors cursor-pointer"
+              className="mt-4 sm:mt-0 flex items-center gap-2 text-sm text-[#9A9A9A] hover:text-white transition-colors cursor-pointer min-h-[48px]"
             >
               Lihat Semua <ArrowRight className="w-4 h-4" />
             </button>
