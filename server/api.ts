@@ -30,11 +30,34 @@ export const requireAuth = (req: any, res: any, next: any) => {
 router.get('/kosts', async (req, res) => {
   try {
     const db = getDb();
-    const result = await db.query('SELECT * FROM kosts');
-    // Ensure facilities is parsed properly if needed, but JSONB is already an object in pg
+    const compact = req.query.compact === 'true';
+    
+    let queryText = 'SELECT * FROM kosts';
+    if (compact) {
+      // Omit heavy additionalImages and description columns
+      queryText = 'SELECT id, "ownerId", name, type, "roomClass", price, rating, "reviewsCount", location, image, facilities, "availableRooms", "totalRooms", address, author FROM kosts';
+    }
+    
+    const result = await db.query(queryText);
     res.json(result.rows);
   } catch (error) {
     console.error('Error fetching kosts:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Get Single Kost by ID (Public)
+router.get('/kosts/:id', async (req, res) => {
+  try {
+    const kostId = req.params.id;
+    const db = getDb();
+    const result = await db.query('SELECT * FROM kosts WHERE id = $1', [kostId]);
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Kost not found' });
+    }
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Error fetching kost details:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });

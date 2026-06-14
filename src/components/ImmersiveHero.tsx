@@ -3,6 +3,7 @@ import { ArrowRight, ChevronDown, Download, Smartphone, Search, Shield, Zap, Use
 import KostCard from './KostCard';
 import { Kost, HeroBanner } from '../types';
 import { useState, useEffect } from 'react';
+import { optimizeImageUrl } from '../utils/image';
 
 
 const Marquee = () => {
@@ -309,7 +310,7 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
                     className="absolute inset-0 w-full h-full bg-[#141414] border border-[#2A2A2A] rounded-2xl overflow-hidden shadow-2xl origin-bottom"
                   >
                     <img
-                      src={banner.image}
+                      src={optimizeImageUrl(banner.image, 500, 60)}
                       alt={banner.title}
                       referrerPolicy="no-referrer"
                       loading={idx === currentSlide ? 'eager' : 'lazy'}

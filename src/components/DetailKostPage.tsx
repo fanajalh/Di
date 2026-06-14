@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { MapPin, ArrowLeft, Star, Users, CheckCircle2, Navigation } from 'lucide-react';
 import { Kost } from '../types';
+import { optimizeImageUrl } from '../utils/image';
 
 interface DetailKostPageProps {
   kost: Kost;
@@ -36,7 +37,7 @@ export default function DetailKostPage({ kost, onClose, onBookNow }: DetailKostP
           // Single Image Cinematic Hero
           <div className="relative w-full h-[60vh] md:h-[70vh]">
             <img 
-              src={kost.image} 
+              src={optimizeImageUrl(kost.image, 1200, 75)} 
               alt={kost.name} 
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover"
@@ -72,7 +73,7 @@ export default function DetailKostPage({ kost, onClose, onBookNow }: DetailKostP
              {/* Desktop Grid Layout */}
              <div className="hidden md:grid grid-cols-4 grid-rows-2 h-[75vh] gap-3">
                 <div className="col-span-3 row-span-2 relative rounded-3xl overflow-hidden group">
-                  <img src={kost.image} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Cover" />
+                  <img src={optimizeImageUrl(kost.image, 1200, 75)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-black/30"></div>
                   
                   {/* Title overlay inside large image */}
@@ -90,14 +91,14 @@ export default function DetailKostPage({ kost, onClose, onBookNow }: DetailKostP
                 </div>
                 
                 <div className="col-span-1 row-span-1 relative rounded-3xl overflow-hidden group bg-[#141414]">
-                  <img src={kost.additionalImages[0]} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Gallery 1" />
+                  <img src={optimizeImageUrl(kost.additionalImages[0], 400, 70)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Gallery 1" />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
                 </div>
                 
                 <div className="col-span-1 row-span-1 relative rounded-3xl overflow-hidden group bg-[#141414]">
                   {kost.additionalImages.length > 1 ? (
                     <>
-                      <img src={kost.additionalImages[1]} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Gallery 2" />
+                      <img src={optimizeImageUrl(kost.additionalImages[1], 400, 70)} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Gallery 2" />
                       {kost.additionalImages.length > 2 && (
                          <div className="absolute inset-0 bg-black/60 flex items-center justify-center backdrop-blur-sm cursor-pointer hover:bg-black/70 transition-colors">
                            <span className="text-white font-bold tracking-widest text-sm uppercase">+{kost.additionalImages.length - 2} Foto Lainnya</span>
@@ -113,7 +114,7 @@ export default function DetailKostPage({ kost, onClose, onBookNow }: DetailKostP
              {/* Mobile view - Horizontal Snap Scroll */}
              <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory h-[65vh] w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 <div className="min-w-full h-full snap-center relative flex-shrink-0">
-                  <img src={kost.image} className="w-full h-full object-cover" alt="Cover" />
+                  <img src={optimizeImageUrl(kost.image, 600, 70)} className="w-full h-full object-cover" alt="Cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-black/20"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
                     <div className="flex items-center gap-2 mb-3">
@@ -128,7 +129,7 @@ export default function DetailKostPage({ kost, onClose, onBookNow }: DetailKostP
                 </div>
                 {kost.additionalImages.map((img, idx) => (
                   <div key={idx} className="min-w-full h-full snap-center relative flex-shrink-0">
-                    <img src={img} className="w-full h-full object-cover" alt={`Gallery ${idx+1}`} />
+                    <img src={optimizeImageUrl(img, 600, 70)} className="w-full h-full object-cover" alt={`Gallery ${idx+1}`} />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-black/20"></div>
                   </div>
                 ))}

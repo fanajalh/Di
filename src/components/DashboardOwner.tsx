@@ -35,6 +35,8 @@ import {
   Cell 
 } from 'recharts';
 import { Kost, Booking, HeroBanner } from '../types';
+import { api } from '../api';
+import { toast } from './Toast';
 
 interface DashboardOwnerProps {
   kostList: Kost[];
@@ -302,21 +304,29 @@ export default function DashboardOwner({
     setShowAddModal(false);
   };
 
-  // Trigger editing modal
-  const handleStartEdit = (kost: Kost) => {
-    setEditingKost(kost);
-    setEditName(kost.name);
-    setEditPrice(kost.price);
-    setEditLocation(kost.location);
-    setEditClass(kost.roomClass);
-    setEditType(kost.type);
-    setEditAddress(kost.address || '');
-    setEditDescription(kost.description || '');
-    setEditTotalRooms(kost.totalRooms);
-    setEditAvailableRooms(kost.availableRooms);
-    setEditImage(kost.image);
-    setEditAdditionalImages(kost.additionalImages || []);
-    setEditFacilities(kost.facilities || []);
+  // Trigger editing modal (loads full details asynchronously)
+  const handleStartEdit = async (kost: Kost) => {
+    const tid = toast.loading('Memuat detail properti...');
+    try {
+      const fullKost = await api.getKostById(kost.id);
+      setEditingKost(fullKost);
+      setEditName(fullKost.name);
+      setEditPrice(fullKost.price);
+      setEditLocation(fullKost.location);
+      setEditClass(fullKost.roomClass);
+      setEditType(fullKost.type);
+      setEditAddress(fullKost.address || '');
+      setEditDescription(fullKost.description || '');
+      setEditTotalRooms(fullKost.totalRooms);
+      setEditAvailableRooms(fullKost.availableRooms);
+      setEditImage(fullKost.image);
+      setEditAdditionalImages(fullKost.additionalImages || []);
+      setEditFacilities(fullKost.facilities || []);
+      toast.dismiss(tid);
+    } catch (err) {
+      console.error(err);
+      toast.update(tid, { type: 'error', message: 'Gagal memuat data detail properti.' });
+    }
   };
 
   // Save edited listing

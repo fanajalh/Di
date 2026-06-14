@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Star, MapPin, Wifi, ArrowRight } from 'lucide-react';
 import { Kost } from '../types';
+import { optimizeImageUrl } from '../utils/image';
 
 interface KostCardProps {
   kost: Kost;
@@ -43,7 +44,7 @@ export default function KostCard({ kost, onSelect }: KostCardProps) {
       {/* Image Section (Left/Top) */}
       <div className="relative w-full h-48 sm:w-1/3 sm:h-full shrink-0 overflow-hidden">
         <img
-          src={kost.image}
+          src={optimizeImageUrl(kost.image, 400, 60)}
           alt={kost.name}
           referrerPolicy="no-referrer"
           loading="lazy"

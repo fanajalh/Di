@@ -51,18 +51,16 @@ export default function App() {
   const refreshData = async (showLoading = false) => {
     if (showLoading) setIsDataLoading(true);
     try {
-      const fetchedKosts = await api.getKosts();
+      // Fetch data in parallel to resolve network request chain bottleneck!
+      const [fetchedKosts, fetchedBanners, fetchedBookings] = await Promise.all([
+        api.getKosts({ compact: true }),
+        api.getBanners(),
+        session ? api.getBookings() : Promise.resolve([])
+      ]);
+      
       setKosts(fetchedKosts);
-      
-      const fetchedBanners = await api.getBanners();
       setBanners(fetchedBanners);
-      
-      if (session) {
-        const fetchedBookings = await api.getBookings();
-        setBookings(fetchedBookings);
-      } else {
-        setBookings([]);
-      }
+      setBookings(fetchedBookings);
     } catch (err) {
       console.error('Failed to refresh data', err);
     } finally {
@@ -73,6 +71,19 @@ export default function App() {
   useEffect(() => {
     refreshData(true);
   }, [session]);
+
+  // Handle selecting a kost by setting basic info first and loading details asynchronously
+  const handleSelectKost = async (kost: Kost) => {
+    setSelectedKost(kost);
+    setCurrentView('detail-kost');
+    try {
+      const fullKost = await api.getKostById(kost.id);
+      // Only update if this is still the active selected kost
+      setSelectedKost(prev => prev && prev.id === kost.id ? fullKost : prev);
+    } catch (err) {
+      console.error('Failed to fetch kost details', err);
+    }
+  };
 
   // Filter State
   const [filters, setFilters] = useState<FilterState>({
@@ -300,10 +311,7 @@ export default function App() {
           <ImmersiveHero 
             onExploreClick={() => setCurrentView('catalog')}
             featuredKosts={kosts.slice(0, 4)}
-            onSelectKost={(kost) => {
-              setSelectedKost(kost);
-              setCurrentView('detail-kost');
-            }}
+            onSelectKost={handleSelectKost}
             banners={banners}
           />
         </div>
@@ -415,10 +423,7 @@ export default function App() {
                       <KostCard 
                         key={kost.id} 
                         kost={kost} 
-                        onSelect={(sel) => {
-                          setSelectedKost(sel);
-                          setCurrentView('detail-kost');
-                        }}
+                        onSelect={handleSelectKost}
                       />
                     ))}
                   </div>

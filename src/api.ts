@@ -10,9 +10,17 @@ const getAuthHeaders = () => {
 };
 
 export const api = {
-  getKosts: async (): Promise<Kost[]> => {
-    const res = await fetch('/api/data/kosts');
+  getKosts: async (options?: { compact?: boolean }): Promise<Kost[]> => {
+    const url = options?.compact ? '/api/data/kosts?compact=true' : '/api/data/kosts';
+    const res = await fetch(url);
     if (!res.ok) throw new Error('Failed to fetch kosts');
+    const data = await res.json();
+    return data;
+  },
+
+  getKostById: async (id: string): Promise<Kost> => {
+    const res = await fetch(`/api/data/kosts/${id}`);
+    if (!res.ok) throw new Error('Failed to fetch kost details');
     const data = await res.json();
     return data;
   },
