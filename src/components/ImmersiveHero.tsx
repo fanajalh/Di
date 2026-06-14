@@ -221,23 +221,22 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
         {/* Left Column (Content & Search) */}
         <div className="lg:col-span-7 flex flex-col justify-center relative z-10 text-left">
           <motion.p 
-            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
             className="text-[#9A9A9A] font-mono text-xs tracking-[0.25em] uppercase mb-6"
           >
             Premium Living Experience
           </motion.p>
           
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
+          <h1 
             className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[0.95] mb-8 text-white font-display"
             aria-label="Elegance in Every Square Meter"
           >
             Elegance in <br />
             Every <span className="font-semibold text-[#C0C0C0]">Square Meter.</span>
-          </motion.h1>
+          </h1>
           
           <motion.p 
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.6 }}
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.2 }}
             className="text-sm text-[#B0B0B0] max-w-lg mb-10 leading-relaxed font-light"
           >
             Discover meticulously designed modular spaces that adapt to your lifestyle. Simplicity meets sophisticated comfort.
@@ -245,7 +244,7 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
 
           {/* Search Bar */}
           <motion.div 
-            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8 }}
+            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-3 mb-12 max-w-xl"
           >
             <div className="flex-1 bg-[#141414] border border-[#2A2A2A] rounded-xl px-5 py-3.5 flex items-center gap-3">
@@ -269,7 +268,7 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
 
           {/* Trust Stats */}
           <motion.div 
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 1 }}
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.4 }}
             className="grid grid-cols-3 gap-8 max-w-md"
           >
             <div className="border-t border-[#2A2A2A] pt-4">
@@ -313,6 +312,10 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
                       src={banner.image}
                       alt={banner.title}
                       referrerPolicy="no-referrer"
+                      loading={idx === currentSlide ? 'eager' : 'lazy'}
+                      decoding="async"
+                      width={440}
+                      height={550}
                       className="w-full h-full object-cover select-none pointer-events-none"
                     />
                     
@@ -355,16 +358,19 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
 
               {/* Minimal Dot Indicators */}
               {banners.length > 1 && (
-                <div className="absolute -bottom-8 right-0 flex items-center gap-1.5 z-20">
+                <div className="absolute -bottom-10 right-0 flex items-center gap-0 z-20">
                   {banners.map((_, idx) => (
                     <button
                       key={idx}
                       onClick={() => setCurrentSlide(idx)}
-                      className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                        currentSlide === idx ? 'w-5 bg-white' : 'w-1.5 bg-white/30 hover:bg-white/60'
-                      }`}
+                      className="relative p-3 cursor-pointer flex items-center justify-center"
                       title={`Slide ${idx + 1}`}
-                    />
+                      aria-label={`Go to slide ${idx + 1}`}
+                    >
+                      <span className={`block h-1.5 rounded-full transition-all duration-300 ${
+                        currentSlide === idx ? 'w-5 bg-white' : 'w-1.5 bg-white/30 hover:bg-white/60'
+                      }`} />
+                    </button>
                   ))}
                 </div>
               )}
@@ -379,7 +385,7 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
 
         {/* Scroll indicator */}
         <motion.div 
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 1.2 }}
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.5 }}
           className="absolute bottom-6 left-8 md:left-24 text-[#7A7A7A] flex items-center gap-2 text-xs font-mono uppercase tracking-widest z-10"
         >
           <span>Scroll</span>

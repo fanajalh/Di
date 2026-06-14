@@ -1,21 +1,23 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Navbar from './components/Navbar';
 import ImmersiveHero from './components/ImmersiveHero';
 import KostCard from './components/KostCard';
-import FilterSidebar from './components/FilterSidebar';
-import DashboardOwner from './components/DashboardOwner';
-import DashboardBuyer from './components/DashboardBuyer';
-import UserProfilePage from './components/UserProfilePage';
 import Footer from './components/Footer';
-import Login from './components/auth/Login';
-import Register from './components/auth/Register';
-import VerifyOTP from './components/auth/VerifyOTP';
-import DetailKostPage from './components/DetailKostPage';
-import BookingPage from './components/BookingPage';
 import ToastContainer, { toast } from './components/Toast';
 import { useSession } from './components/AuthContext';
 import { Kost, Booking, FilterState, HeroBanner } from './types';
+
+// Lazy-loaded route-level components (code splitting for performance)
+const FilterSidebar = lazy(() => import('./components/FilterSidebar'));
+const DashboardOwner = lazy(() => import('./components/DashboardOwner'));
+const DashboardBuyer = lazy(() => import('./components/DashboardBuyer'));
+const UserProfilePage = lazy(() => import('./components/UserProfilePage'));
+const Login = lazy(() => import('./components/auth/Login'));
+const Register = lazy(() => import('./components/auth/Register'));
+const VerifyOTP = lazy(() => import('./components/auth/VerifyOTP'));
+const DetailKostPage = lazy(() => import('./components/DetailKostPage'));
+const BookingPage = lazy(() => import('./components/BookingPage'));
 import { 
   X, 
   MapPin, 
@@ -285,6 +287,7 @@ export default function App() {
 
       {/* RENDER VIEWS ACCORDINGLY */}
       <main id="main-content" className="flex-grow flex flex-col">
+        <Suspense fallback={<div className="flex-1 flex items-center justify-center min-h-[60vh]"><div className="w-6 h-6 border-2 border-[#2A2A2A] border-t-white rounded-full animate-spin" /></div>}>
         {/* AUTHENTICATION VIEWS */}
       {currentView === 'login' && <Login onNavigate={setCurrentView} onSuccess={() => setCurrentView('catalog')} />}
       {currentView === 'register' && <Register onNavigate={setCurrentView} />}
@@ -579,6 +582,7 @@ export default function App() {
             onConfirm={handleConfirmReservation}
           />
         )}
+        </Suspense>
       </main>
     </div>
   );

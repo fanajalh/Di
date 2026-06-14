@@ -17,14 +17,14 @@ export default function Footer() {
               </span>
             </div>
             
-            <p className="text-xs text-[#808080] font-sans max-w-sm leading-relaxed">
+            <p className="text-xs text-[#8C8C8C] font-sans max-w-sm leading-relaxed">
               Di adalah platform pemesanan kamar kost premium paling inovatif di Indonesia. Mengintegrasikan kemudahan visualisasi kamar dengan penawaran sewa mingguan, bulanan, dan tahunan yang didukung penuh garansi ketersediaan.
             </p>
           </div>
 
           {/* Quick links */}
           <div className="md:col-span-3 space-y-3 text-xs text-left">
-            <h4 className="font-display font-semibold text-white tracking-widest uppercase">Layanan Kota</h4>
+            <h2 className="font-display font-semibold text-white tracking-widest uppercase text-xs">Layanan Kota</h2>
             <ul className="space-y-2">
               <li className="hover:text-white transition-colors cursor-pointer">Kost Jakarta Pusat & Barat</li>
               <li className="hover:text-white transition-colors cursor-pointer">Kost Bandung Dago</li>
@@ -35,9 +35,9 @@ export default function Footer() {
 
           {/* Contacts info */}
           <div className="md:col-span-4 space-y-3 text-xs text-left">
-            <h4 className="font-display font-semibold text-white tracking-widest uppercase">Hubungi Di</h4>
+            <h2 className="font-display font-semibold text-white tracking-widest uppercase text-xs">Hubungi Di</h2>
             <ul className="space-y-2.5">
-              <li className="flex items-center gap-2 text-[#808080]">
+              <li className="flex items-center gap-2 text-[#8C8C8C]">
                 <MapPin className="w-4 h-4 text-[#949494] shrink-0" />
                 <span>Menara Thamrin, Lantai 12, Jakarta</span>
               </li>
@@ -54,7 +54,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom copyright alignment */}
-        <div className="border-t border-[#2A2A2A] pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#606060] font-mono gap-3">
+        <div className="border-t border-[#2A2A2A] pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#8A8A8A] font-mono gap-3">
           <p>© {new Date().getFullYear()} Di. Seluruh hak cipta dilindungi.</p>
           <p>Dibuat dengan standard kenyamanan premium.</p>
         </div>

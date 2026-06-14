@@ -46,6 +46,10 @@ export default function KostCard({ kost, onSelect }: KostCardProps) {
           src={kost.image}
           alt={kost.name}
           referrerPolicy="no-referrer"
+          loading="lazy"
+          decoding="async"
+          width={400}
+          height={300}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
         />
         <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-[#141414]/50 sm:from-transparent via-transparent to-black/30"></div>
