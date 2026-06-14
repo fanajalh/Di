@@ -21,6 +21,10 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'KOSTIN Backend is running' });
 });
 
-app.listen(PORT, () => {
-  console.log(`Backend server listening on port ${PORT}`);
-});
+export default app;
+
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Backend server listening on port ${PORT}`);
+  });
+}

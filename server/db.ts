@@ -5,11 +5,10 @@ dotenv.config();
 const { Pool } = pkg;
 
 if (!process.env.DATABASE_URL) {
-  console.error('❌ ERROR: DATABASE_URL is not defined in environment variables.');
-  process.exit(1);
+  console.warn('⚠️ WARNING: DATABASE_URL is not defined in environment variables.');
 }
 
-const connectionString = process.env.DATABASE_URL;
+const connectionString = process.env.DATABASE_URL || '';
 
 const pool = new Pool({
   connectionString,
