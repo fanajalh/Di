@@ -1,0 +1,6 @@
+{
+  "name": "KOSTIN",
+  "description": "Platform modern pemesanan kamar kost dengan visualisasi isometric 3D, filter dinamis, dan dashboard owner.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
