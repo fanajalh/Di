@@ -17,7 +17,16 @@ initDb().catch(console.error);
 app.use('/api/auth', authRoutes);
 app.use('/api/data', dataRoutes);
 
+// Vercel Serverless Fallback Routes
+// In serverless environments with rewrites, req.url might be stripped of /api
+app.use('/auth', authRoutes);
+app.use('/data', dataRoutes);
+
 app.get('/api/health', (req, res) => {
+  res.json({ status: 'OK', message: 'KOSTIN Backend is running' });
+});
+
+app.get('/health', (req, res) => {
   res.json({ status: 'OK', message: 'KOSTIN Backend is running' });
 });
 
