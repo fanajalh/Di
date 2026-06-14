@@ -124,14 +124,14 @@ export default function Register({ onNavigate }: RegisterProps) {
             Langkah <br />
             <span className="font-semibold text-[#B0B0B0]">Baru Anda.</span>
           </h1>
-          <p className="text-sm text-[#8A8A8A] leading-relaxed max-w-md font-light">
+          <p className="text-sm text-[#A3A3A3] leading-relaxed max-w-md font-light">
             Buat akun Di sekarang untuk mendapatkan akses ke ratusan unit kost eksklusif, memantau pembayaran, dan melakukan survei langsung.
           </p>
         </div>
 
         {/* Empty footer space on left side for balancing split layout */}
         <div className="relative z-10">
-          <p className="text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest">© 2026 Di INC.</p>
+          <p className="text-[10px] font-mono text-[#808080] uppercase tracking-widest">© 2026 Di INC.</p>
         </div>
       </div>
 
@@ -158,13 +158,13 @@ export default function Register({ onNavigate }: RegisterProps) {
             <h2 className="text-3xl font-light text-white tracking-tight mb-2 uppercase font-display">
               Buat Akun Baru
             </h2>
-            <p className="text-xs text-[#8A8A8A] font-light">
+            <p className="text-xs text-[#A3A3A3] font-light">
               Bergabunglah dengan ekosistem Di hari ini.
             </p>
           </div>
 
           {error && (
-            <div className="bg-[#1C1C1C] border border-[#3A3A3A] text-[#B0B0B0] text-xs p-3.5 rounded-xl mb-6 text-center">
+            <div className="bg-[#1C1C1C] border border-[#606060] text-[#B0B0B0] text-xs p-3.5 rounded-xl mb-6 text-center">
               {error}
             </div>
           )}
@@ -173,56 +173,56 @@ export default function Register({ onNavigate }: RegisterProps) {
             <div className="bg-[#141414] border border-[#2A2A2A] p-8 rounded-xl text-center">
               <ShieldCheck className="w-12 h-12 text-white mx-auto mb-4" />
               <h3 className="text-lg font-bold text-white mb-2 uppercase font-display">Registrasi Berhasil!</h3>
-              <p className="text-xs text-[#8A8A8A]">Mengarahkan ke halaman login...</p>
+              <p className="text-xs text-[#A3A3A3]">Mengarahkan ke halaman login...</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Full Name Field */}
               <div className="space-y-2">
-                <div className="flex items-center bg-[#141414] border border-[#2A2A2A] rounded-xl px-4 focus-within:border-[#5A5A5A] transition-colors">
-                  <User className="w-4 h-4 text-[#5A5A5A] shrink-0" />
+                <div className="flex items-center bg-[#141414] border border-[#2A2A2A] rounded-xl px-4 focus-within:border-[#808080] transition-colors">
+                  <User className="w-4 h-4 text-[#808080] shrink-0" />
                   <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
                     placeholder="Full Name"
-                    className="flex-1 bg-transparent py-4 px-4 text-sm text-white placeholder:text-[#3A3A3A] outline-none font-light"
+                    className="flex-1 bg-transparent py-4 px-4 text-sm text-white placeholder:text-[#606060] outline-none font-light"
                   />
                 </div>
               </div>
 
               {/* Email Field */}
               <div className="space-y-2">
-                <div className="flex items-center bg-[#141414] border border-[#2A2A2A] rounded-xl px-4 focus-within:border-[#5A5A5A] transition-colors">
-                  <Mail className="w-4 h-4 text-[#5A5A5A] shrink-0" />
+                <div className="flex items-center bg-[#141414] border border-[#2A2A2A] rounded-xl px-4 focus-within:border-[#808080] transition-colors">
+                  <Mail className="w-4 h-4 text-[#808080] shrink-0" />
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     placeholder="Email Address"
-                    className="flex-1 bg-transparent py-4 px-4 text-sm text-white placeholder:text-[#3A3A3A] outline-none font-light"
+                    className="flex-1 bg-transparent py-4 px-4 text-sm text-white placeholder:text-[#606060] outline-none font-light"
                   />
                 </div>
               </div>
 
               {/* Password Field */}
               <div className="space-y-2">
-                <div className="flex items-center bg-[#141414] border border-[#2A2A2A] rounded-xl px-4 focus-within:border-[#5A5A5A] transition-colors">
-                  <Lock className="w-4 h-4 text-[#5A5A5A] shrink-0" />
+                <div className="flex items-center bg-[#141414] border border-[#2A2A2A] rounded-xl px-4 focus-within:border-[#808080] transition-colors">
+                  <Lock className="w-4 h-4 text-[#808080] shrink-0" />
                   <input
                     type={showPassword ? 'text' : 'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                     placeholder="Password (Min. 6 characters)"
-                    className="flex-1 bg-transparent py-4 px-4 text-sm text-white placeholder:text-[#3A3A3A] outline-none font-light"
+                    className="flex-1 bg-transparent py-4 px-4 text-sm text-white placeholder:text-[#606060] outline-none font-light"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="text-[#5A5A5A] hover:text-white transition-colors cursor-pointer"
+                    className="text-[#808080] hover:text-white transition-colors cursor-pointer"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -249,7 +249,7 @@ export default function Register({ onNavigate }: RegisterProps) {
           {/* Divider */}
           <div className="relative flex py-6 items-center justify-center">
             <div className="flex-grow border-t border-[#2A2A2A]"></div>
-            <span className="flex-shrink mx-4 text-[9px] font-mono text-[#5A5A5A] tracking-[0.25em] uppercase">
+            <span className="flex-shrink mx-4 text-[9px] font-mono text-[#808080] tracking-[0.25em] uppercase">
               ATAU
             </span>
             <div className="flex-grow border-t border-[#2A2A2A]"></div>
@@ -267,7 +267,7 @@ export default function Register({ onNavigate }: RegisterProps) {
 
           {/* Footer Navigation */}
           <div className="mt-8 text-center border-t border-[#2A2A2A] pt-6">
-            <p className="text-xs text-[#5A5A5A] font-mono tracking-wider uppercase">
+            <p className="text-xs text-[#808080] font-mono tracking-wider uppercase">
               Sudah memiliki akun?{' '}
               <button 
                 type="button"

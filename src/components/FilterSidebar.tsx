@@ -73,8 +73,8 @@ export default function FilterSidebar({ filters, onFilterChange, availableLocati
   const getDropdownButtonClass = (isActive: boolean) => 
     `flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm transition-all border cursor-pointer ${
       isActive
-        ? 'bg-white/10 text-white border-[#3A3A3A]'
-        : 'bg-[#1C1C1C] text-[#8A8A8A] border-[#2A2A2A] hover:bg-[#2A2A2A] hover:text-white'
+        ? 'bg-white/10 text-white border-[#606060]'
+        : 'bg-[#1C1C1C] text-[#A3A3A3] border-[#2A2A2A] hover:bg-[#2A2A2A] hover:text-white'
     }`;
 
   return (
@@ -82,7 +82,7 @@ export default function FilterSidebar({ filters, onFilterChange, availableLocati
       <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
         <div className="flex items-center gap-2 pr-4 border-r border-[#2A2A2A] hidden sm:flex">
           <SlidersHorizontal className="w-5 h-5 text-white" />
-          <span className="text-xs uppercase tracking-widest font-mono text-[#5A5A5A] font-bold">Filters</span>
+          <span className="text-xs uppercase tracking-widest font-mono text-[#808080] font-bold">Filters</span>
         </div>
 
         {/* Location Dropdown */}
@@ -102,9 +102,9 @@ export default function FilterSidebar({ filters, onFilterChange, availableLocati
             {openDropdown === 'location' && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute top-full left-0 mt-3 w-56 bg-[#141414] border border-[#2A2A2A] rounded-2xl shadow-2xl p-3 z-50">
                 <div className="flex flex-col gap-1.5">
-                  <button onClick={() => { updateFilter({ location: 'All' }); setOpenDropdown(null); }} className={`text-left text-sm px-4 py-2.5 rounded-xl transition-all cursor-pointer border ${filters.location === 'All' ? 'bg-white/10 text-white border-[#3A3A3A]' : 'text-[#6B6B6B] hover:text-white border-transparent hover:bg-white/5'}`}>Semua Area</button>
+                  <button onClick={() => { updateFilter({ location: 'All' }); setOpenDropdown(null); }} className={`text-left text-sm px-4 py-2.5 rounded-xl transition-all cursor-pointer border ${filters.location === 'All' ? 'bg-white/10 text-white border-[#606060]' : 'text-[#949494] hover:text-white border-transparent hover:bg-white/5'}`}>Semua Area</button>
                   {availableLocations.map((loc) => (
-                    <button key={loc} onClick={() => { updateFilter({ location: loc }); setOpenDropdown(null); }} className={`text-left text-sm px-4 py-2.5 rounded-xl transition-all cursor-pointer border ${filters.location === loc ? 'bg-white/10 text-white border-[#3A3A3A]' : 'text-[#6B6B6B] hover:text-white border-transparent hover:bg-white/5'}`}>{loc}</button>
+                    <button key={loc} onClick={() => { updateFilter({ location: loc }); setOpenDropdown(null); }} className={`text-left text-sm px-4 py-2.5 rounded-xl transition-all cursor-pointer border ${filters.location === loc ? 'bg-white/10 text-white border-[#606060]' : 'text-[#949494] hover:text-white border-transparent hover:bg-white/5'}`}>{loc}</button>
                   ))}
                 </div>
               </motion.div>
@@ -130,7 +130,7 @@ export default function FilterSidebar({ filters, onFilterChange, availableLocati
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute top-full left-0 mt-3 w-48 bg-[#141414] border border-[#2A2A2A] rounded-2xl shadow-2xl p-3 z-50">
                 <div className="flex flex-col gap-1.5">
                   {roomTypes.map((type) => (
-                    <button key={type} onClick={() => { updateFilter({ type }); setOpenDropdown(null); }} className={`text-left text-sm px-4 py-2.5 rounded-xl transition-all cursor-pointer border ${filters.type === type ? 'bg-white/10 text-white border-[#3A3A3A]' : 'text-[#6B6B6B] hover:text-white border-transparent hover:bg-white/5'}`}>{type === 'All' ? 'Semua Tipe' : type}</button>
+                    <button key={type} onClick={() => { updateFilter({ type }); setOpenDropdown(null); }} className={`text-left text-sm px-4 py-2.5 rounded-xl transition-all cursor-pointer border ${filters.type === type ? 'bg-white/10 text-white border-[#606060]' : 'text-[#949494] hover:text-white border-transparent hover:bg-white/5'}`}>{type === 'All' ? 'Semua Tipe' : type}</button>
                   ))}
                 </div>
               </motion.div>
@@ -156,7 +156,7 @@ export default function FilterSidebar({ filters, onFilterChange, availableLocati
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute top-full left-0 mt-3 w-56 bg-[#141414] border border-[#2A2A2A] rounded-2xl shadow-2xl p-3 z-50">
                 <div className="flex flex-col gap-1.5">
                   {roomClasses.map((cl) => (
-                    <button key={cl} onClick={() => { updateFilter({ roomClass: cl }); setOpenDropdown(null); }} className={`text-left text-sm px-4 py-2.5 rounded-xl transition-all flex items-center justify-between cursor-pointer border ${filters.roomClass === cl ? 'bg-white/10 text-white border-[#3A3A3A]' : 'text-[#6B6B6B] hover:text-white border-transparent hover:bg-white/5'}`}>
+                    <button key={cl} onClick={() => { updateFilter({ roomClass: cl }); setOpenDropdown(null); }} className={`text-left text-sm px-4 py-2.5 rounded-xl transition-all flex items-center justify-between cursor-pointer border ${filters.roomClass === cl ? 'bg-white/10 text-white border-[#606060]' : 'text-[#949494] hover:text-white border-transparent hover:bg-white/5'}`}>
                       <span>{cl === 'All' ? 'Semua Kelas' : cl}</span>
                       {filters.roomClass === cl && <Check className="w-4 h-4 text-white" />}
                     </button>
@@ -184,7 +184,7 @@ export default function FilterSidebar({ filters, onFilterChange, availableLocati
             {openDropdown === 'price' && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute top-full left-0 sm:-translate-x-1/2 sm:ml-16 mt-3 w-72 bg-[#141414] border border-[#2A2A2A] rounded-2xl shadow-2xl p-6 z-50">
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between text-xs text-[#5A5A5A] font-mono">
+                  <div className="flex items-center justify-between text-xs text-[#808080] font-mono">
                     <span>{formatRupiahShort(filters.minPrice)}</span>
                     <span>{formatRupiahShort(6000000)}</span>
                   </div>
@@ -197,7 +197,7 @@ export default function FilterSidebar({ filters, onFilterChange, availableLocati
                     onChange={(e) => updateFilter({ maxPrice: Number(e.target.value) })}
                     className="w-full h-1.5 rounded-lg cursor-pointer"
                   />
-                  <div className="text-center text-sm text-[#6B6B6B] font-light mt-2">
+                  <div className="text-center text-sm text-[#949494] font-light mt-2">
                     Maks. <strong className="text-white font-medium">Rp {filters.maxPrice.toLocaleString('id-ID')} / bln</strong>
                   </div>
                 </div>
@@ -226,8 +226,8 @@ export default function FilterSidebar({ filters, onFilterChange, availableLocati
                   {facilityOptions.map((fac) => {
                     const isSelected = filters.facilities.includes(fac);
                     return (
-                      <label key={fac} onClick={() => toggleFacility(fac)} className={`text-sm px-4 py-2.5 rounded-xl cursor-pointer border flex items-center gap-3 transition-all ${isSelected ? 'bg-white/10 text-white border-[#3A3A3A]' : 'bg-transparent text-[#6B6B6B] border-transparent hover:bg-white/5 hover:text-white'}`}>
-                        <div className={`w-4 h-4 rounded-md flex items-center justify-center border transition-all ${isSelected ? 'bg-white border-white text-black' : 'border-[#3A3A3A] bg-transparent'}`}>
+                      <label key={fac} onClick={() => toggleFacility(fac)} className={`text-sm px-4 py-2.5 rounded-xl cursor-pointer border flex items-center gap-3 transition-all ${isSelected ? 'bg-white/10 text-white border-[#606060]' : 'bg-transparent text-[#949494] border-transparent hover:bg-white/5 hover:text-white'}`}>
+                        <div className={`w-4 h-4 rounded-md flex items-center justify-center border transition-all ${isSelected ? 'bg-white border-white text-black' : 'border-[#606060] bg-transparent'}`}>
                           {isSelected && <Check className="w-3 h-3" />}
                         </div>
                         {fac}
@@ -243,7 +243,7 @@ export default function FilterSidebar({ filters, onFilterChange, availableLocati
 
       <button
         onClick={handleReset}
-        className="text-xs text-[#5A5A5A] hover:text-white font-mono flex items-center justify-center gap-1.5 transition-colors bg-[#1C1C1C] hover:bg-[#2A2A2A] px-4 py-2.5 rounded-xl border border-[#2A2A2A] cursor-pointer w-full sm:w-auto mt-2 sm:mt-0"
+        className="text-xs text-[#808080] hover:text-white font-mono flex items-center justify-center gap-1.5 transition-colors bg-[#1C1C1C] hover:bg-[#2A2A2A] px-4 py-2.5 rounded-xl border border-[#2A2A2A] cursor-pointer w-full sm:w-auto mt-2 sm:mt-0"
       >
         <RefreshCcw className="w-3.5 h-3.5" />
         <span>Reset</span>

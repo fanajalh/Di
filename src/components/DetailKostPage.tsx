@@ -105,7 +105,7 @@ export default function DetailKostPage({ kost, onClose, onBookNow }: DetailKostP
                       )}
                     </>
                   ) : (
-                    <div className="w-full h-full bg-[#141414] border border-[#1C1C1C] flex items-center justify-center text-[#3A3A3A] font-mono text-xs">Kosong</div>
+                    <div className="w-full h-full bg-[#141414] border border-[#1C1C1C] flex items-center justify-center text-[#606060] font-mono text-xs">Kosong</div>
                   )}
                 </div>
              </div>
@@ -153,21 +153,21 @@ export default function DetailKostPage({ kost, onClose, onBookNow }: DetailKostP
           {/* Key Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-8 border-y border-[#1A1A1C]">
             <div>
-              <p className="text-[10px] text-[#5A5A5A] font-mono uppercase tracking-widest mb-2">Rating</p>
+              <p className="text-[10px] text-[#808080] font-mono uppercase tracking-widest mb-2">Rating</p>
               <div className="flex items-center gap-2">
                 <Star className="w-4 h-4 text-white fill-white" />
                 <span className="text-xl font-bold">{kost.rating.toFixed(1)}</span>
               </div>
             </div>
             <div>
-              <p className="text-[10px] text-[#5A5A5A] font-mono uppercase tracking-widest mb-2">Kapasitas</p>
+              <p className="text-[10px] text-[#808080] font-mono uppercase tracking-widest mb-2">Kapasitas</p>
               <div className="flex items-center gap-2">
                 <Users className="w-4 h-4 text-white" />
                 <span className="text-xl font-bold">{kost.totalRooms} Unit</span>
               </div>
             </div>
             <div className="col-span-2 md:col-span-2">
-              <p className="text-[10px] text-[#5A5A5A] font-mono uppercase tracking-widest mb-2">Ketersediaan</p>
+              <p className="text-[10px] text-[#808080] font-mono uppercase tracking-widest mb-2">Ketersediaan</p>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-white" />
                 <span className="text-xl font-bold">{kost.availableRooms} Kamar Kosong</span>
@@ -176,7 +176,7 @@ export default function DetailKostPage({ kost, onClose, onBookNow }: DetailKostP
           </div>
 
           {/* Description Article */}
-          <article className="prose prose-invert prose-p:text-[#8A8A8A] prose-p:leading-relaxed prose-p:font-light max-w-none">
+          <article className="prose prose-invert prose-p:text-[#A3A3A3] prose-p:leading-relaxed prose-p:font-light max-w-none">
             <h3 className="text-xl font-medium text-white mb-4">Tentang Properti Ini</h3>
             <p className="text-base md:text-lg">{kost.description}</p>
           </article>
@@ -187,7 +187,7 @@ export default function DetailKostPage({ kost, onClose, onBookNow }: DetailKostP
             <div className="grid grid-cols-2 gap-4">
               {kost.facilities.map((fac, idx) => (
                 <div key={idx} className="flex items-center gap-3 bg-[#141414] border border-[#1C1C1C] p-4 rounded-2xl">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#5A5A5A]"></div>
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#808080]"></div>
                   <span className="text-[#B0B0B0] text-sm font-medium">{fac}</span>
                 </div>
               ))}
@@ -197,7 +197,7 @@ export default function DetailKostPage({ kost, onClose, onBookNow }: DetailKostP
           {/* Location Map */}
           <div>
             <h3 className="text-xl font-medium text-white mb-6 flex items-center gap-2">
-              <Navigation className="w-5 h-5 text-[#5A5A5A]" />
+              <Navigation className="w-5 h-5 text-[#808080]" />
               Lokasi Peta
             </h3>
             <div className="w-full h-[400px] rounded-3xl overflow-hidden border border-[#1A1A1C] bg-[#141414]">
@@ -220,21 +220,21 @@ export default function DetailKostPage({ kost, onClose, onBookNow }: DetailKostP
           <div className="sticky top-8 bg-[#141414] border border-[#2A2A2A] p-8 rounded-3xl shadow-2xl">
             <div className="pb-6 border-b border-[#2A2A2A] mb-6 flex items-end justify-between">
               <div>
-                <p className="text-[10px] text-[#5A5A5A] font-mono uppercase tracking-widest mb-2">Harga Sewa / Bulan</p>
+                <p className="text-[10px] text-[#808080] font-mono uppercase tracking-widest mb-2">Harga Sewa / Bulan</p>
                 <div className="text-3xl font-black tracking-tight">{formatRupiah(kost.price)}</div>
               </div>
             </div>
             
             <div className="space-y-4 mb-8">
-              <div className="flex justify-between items-center text-sm text-[#8A8A8A]">
+              <div className="flex justify-between items-center text-sm text-[#A3A3A3]">
                 <span>Tipe Properti</span>
                 <strong className="text-white font-medium">{kost.roomClass}</strong>
               </div>
-              <div className="flex justify-between items-center text-sm text-[#8A8A8A]">
+              <div className="flex justify-between items-center text-sm text-[#A3A3A3]">
                 <span>Status Ketersediaan</span>
                 <strong className="text-white font-medium">{kost.availableRooms > 0 ? 'Tersedia' : 'Penuh'}</strong>
               </div>
-              <div className="flex justify-between items-center text-sm text-[#8A8A8A]">
+              <div className="flex justify-between items-center text-sm text-[#A3A3A3]">
                 <span>Dikelola Oleh</span>
                 <strong className="text-white font-medium">{kost.author}</strong>
               </div>
@@ -247,7 +247,7 @@ export default function DetailKostPage({ kost, onClose, onBookNow }: DetailKostP
             >
               {kost.availableRooms > 0 ? 'Mulai Reservasi' : 'Kamar Penuh'}
             </button>
-            <p className="text-center text-[10px] text-[#5A5A5A] font-mono mt-4 uppercase tracking-widest">
+            <p className="text-center text-[10px] text-[#808080] font-mono mt-4 uppercase tracking-widest">
               Belum dipungut biaya saat ini
             </p>
           </div>

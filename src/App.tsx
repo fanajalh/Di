@@ -284,8 +284,8 @@ export default function App() {
       )}
 
       {/* RENDER VIEWS ACCORDINGLY */}
-      
-      {/* AUTHENTICATION VIEWS */}
+      <main id="main-content" className="flex-grow flex flex-col">
+        {/* AUTHENTICATION VIEWS */}
       {currentView === 'login' && <Login onNavigate={setCurrentView} onSuccess={() => setCurrentView('catalog')} />}
       {currentView === 'register' && <Register onNavigate={setCurrentView} />}
       {currentView === 'forgot-password' && <VerifyOTP onNavigate={setCurrentView} />}
@@ -571,14 +571,15 @@ export default function App() {
         />
       )}
 
-      {/* BOOKING PAGE (REPLACES MODAL) */}
-      {currentView === 'booking' && bookingKost && (
-        <BookingPage
-          kost={bookingKost}
-          onBack={() => setCurrentView('detail-kost')}
-          onConfirm={handleConfirmReservation}
-        />
-      )}
+        {/* BOOKING PAGE (REPLACES MODAL) */}
+        {currentView === 'booking' && bookingKost && (
+          <BookingPage
+            kost={bookingKost}
+            onBack={() => setCurrentView('detail-kost')}
+            onConfirm={handleConfirmReservation}
+          />
+        )}
+      </main>
     </div>
   );
 }

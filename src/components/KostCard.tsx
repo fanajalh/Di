@@ -27,7 +27,7 @@ export default function KostCard({ kost, onSelect }: KostCardProps) {
       case 'springbed':
         return <span className="text-[9px] font-mono leading-none font-semibold" title="Kasur Springbed">Bed</span>;
       default:
-        return <span className="w-1 h-1 bg-[#5A5A5A] rounded-full"></span>;
+        return <span className="w-1 h-1 bg-[#808080] rounded-full"></span>;
     }
   };
 
@@ -38,7 +38,7 @@ export default function KostCard({ kost, onSelect }: KostCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-20px' }}
       transition={{ duration: 0.4 }}
-      className="group bg-[#141414] rounded-xl border border-[#2A2A2A] hover:border-[#3A3A3A] overflow-hidden cursor-pointer transition-all duration-300 flex flex-col sm:flex-row h-auto sm:h-48"
+      className="group bg-[#141414] rounded-xl border border-[#2A2A2A] hover:border-[#3A3A3A] overflow-hidden cursor-pointer transition-all duration-300 flex flex-col sm:flex-row h-auto sm:h-48 text-left"
     >
       {/* Image Section (Left/Top) */}
       <div className="relative w-full h-48 sm:w-1/3 sm:h-full shrink-0 overflow-hidden">
@@ -74,7 +74,7 @@ export default function KostCard({ kost, onSelect }: KostCardProps) {
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 text-xs text-[#5A5A5A] mb-3">
+          <div className="flex items-center gap-1.5 text-xs text-[#808080] mb-3">
             <MapPin className="w-3.5 h-3.5 shrink-0" />
             <span className="truncate">{kost.location} • {kost.address}</span>
           </div>
@@ -84,13 +84,13 @@ export default function KostCard({ kost, onSelect }: KostCardProps) {
             {kost.facilities.slice(0, 4).map((fac, idx) => (
               <span 
                 key={idx} 
-                className="inline-flex items-center justify-center p-1 min-w-[24px] h-[24px] bg-[#1C1C1C] border border-[#2A2A2A] text-[#6B6B6B] rounded hover:bg-[#2A2A2A] hover:text-[#B0B0B0] transition-colors"
+                className="inline-flex items-center justify-center p-1 min-w-[24px] h-[24px] bg-[#1C1C1C] border border-[#2A2A2A] text-[#949494] rounded hover:bg-[#2A2A2A] hover:text-[#B0B0B0] transition-colors"
               >
                 {getFacilityIcon(fac)}
               </span>
             ))}
             {kost.facilities.length > 4 && (
-              <span className="inline-flex items-center justify-center px-1.5 h-[24px] text-[10px] text-[#5A5A5A]">
+              <span className="inline-flex items-center justify-center px-1.5 h-[24px] text-[10px] text-[#808080]">
                 +{kost.facilities.length - 4}
               </span>
             )}
@@ -99,10 +99,10 @@ export default function KostCard({ kost, onSelect }: KostCardProps) {
 
         <div className="flex flex-col sm:flex-row sm:items-end justify-between pt-2 sm:pt-3 border-t border-[#2A2A2A] gap-2 sm:gap-0">
           <div>
-            <p className="text-[9px] sm:text-[10px] text-[#5A5A5A] mb-0.5">Mulai dari</p>
+            <p className="text-[9px] sm:text-[10px] text-[#808080] mb-0.5">Mulai dari</p>
             <p className="text-sm sm:text-lg font-semibold text-white leading-none">
               {formatPrice(kost.price)}
-              <span className="text-[10px] sm:text-xs font-normal text-[#5A5A5A]">/bln</span>
+              <span className="text-[10px] sm:text-xs font-normal text-[#808080]">/bln</span>
             </p>
           </div>
           

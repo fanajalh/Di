@@ -355,17 +355,17 @@ export default function DashboardOwner({
         <div className="max-w-6xl mx-auto">
           <button 
             onClick={() => { setShowAddModal(false); setEditingKost(null); }}
-            className="flex items-center gap-2 text-[#6B6B6B] hover:text-white mb-10 text-xs font-bold uppercase tracking-widest transition-colors cursor-pointer"
+            className="flex items-center gap-2 text-[#949494] hover:text-white mb-10 text-xs font-bold uppercase tracking-widest transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" /> Batal & Kembali ke Dashboard
           </button>
           
           <div className="mb-12 border-b border-[#1C1C1C] pb-6">
-            <h1 className="text-3xl md:text-4xl font-black flex items-center gap-4 tracking-tight">
-              {isEdit ? <Edit2 className="w-8 h-8 text-[#5A5A5A]" /> : <PlusCircle className="w-8 h-8 text-[#5A5A5A]" />}
+            <h2 className="text-3xl md:text-4xl font-black flex items-center gap-4 tracking-tight">
+              {isEdit ? <Edit2 className="w-8 h-8 text-[#808080]" /> : <PlusCircle className="w-8 h-8 text-[#808080]" />}
               {title}
-            </h1>
-            <p className="text-[#6B6B6B] mt-4 text-sm font-mono uppercase tracking-widest">{subtitle}</p>
+            </h2>
+            <p className="text-[#949494] mt-4 text-sm font-mono uppercase tracking-widest">{subtitle}</p>
           </div>
 
           <form onSubmit={isEdit ? handleSaveEditKost : handleCreateKost} className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
@@ -375,18 +375,18 @@ export default function DashboardOwner({
                  <h3 className="text-xs font-bold uppercase tracking-widest text-[#B0B0B0] border-b border-[#1C1C1C] pb-3">1. Informasi Dasar</h3>
                  
                  <div>
-                   <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">Nama Unit Kost</label>
+                   <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">Nama Unit Kost</label>
                    <input type="text" required value={isEdit ? editName : newName} onChange={(e) => isEdit ? setEditName(e.target.value) : setNewName(e.target.value)} className="w-full bg-transparent border-b border-[#2A2A2A] focus:border-white px-0 py-3 text-sm text-white focus:outline-none transition-colors" placeholder="Contoh: Kost Executive Elite Menteng" />
                  </div>
 
                  <div className="grid grid-cols-2 gap-6">
                    <div>
-                     <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">Harga Sewa Bulanan (Rp)</label>
+                     <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">Harga Sewa Bulanan (Rp)</label>
                      <input type="number" required value={isEdit ? editPrice : newPrice} onChange={(e) => isEdit ? setEditPrice(Number(e.target.value)) : setNewPrice(Number(e.target.value))} className="w-full bg-transparent border-b border-[#2A2A2A] focus:border-white px-0 py-3 text-sm text-white focus:outline-none transition-colors" />
                    </div>
                    <div>
-                     <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">Pilih Kota Utama</label>
-                     <select value={isEdit ? editLocation : newLocation} onChange={(e) => isEdit ? setEditLocation(e.target.value) : setNewLocation(e.target.value)} className="w-full bg-transparent border-b border-[#2A2A2A] focus:border-white px-0 py-3 text-sm text-[#8A8A8A] focus:text-white focus:outline-none transition-colors">
+                     <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">Pilih Kota Utama</label>
+                     <select value={isEdit ? editLocation : newLocation} onChange={(e) => isEdit ? setEditLocation(e.target.value) : setNewLocation(e.target.value)} className="w-full bg-transparent border-b border-[#2A2A2A] focus:border-white px-0 py-3 text-sm text-[#A3A3A3] focus:text-white focus:outline-none transition-colors">
                        <option value="Jakarta" className="bg-[#141414]">Jakarta</option>
                        <option value="Bandung" className="bg-[#141414]">Bandung</option>
                        <option value="Yogyakarta" className="bg-[#141414]">Yogyakarta</option>
@@ -398,16 +398,16 @@ export default function DashboardOwner({
 
                  <div className="grid grid-cols-2 gap-6">
                    <div>
-                     <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">Target Gender</label>
-                     <select value={isEdit ? editType : newType} onChange={(e) => isEdit ? setEditType(e.target.value as any) : setNewType(e.target.value as any)} className="w-full bg-transparent border-b border-[#2A2A2A] focus:border-white px-0 py-3 text-sm text-[#8A8A8A] focus:text-white focus:outline-none transition-colors">
+                     <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">Target Gender</label>
+                     <select value={isEdit ? editType : newType} onChange={(e) => isEdit ? setEditType(e.target.value as any) : setNewType(e.target.value as any)} className="w-full bg-transparent border-b border-[#2A2A2A] focus:border-white px-0 py-3 text-sm text-[#A3A3A3] focus:text-white focus:outline-none transition-colors">
                        <option value="Campur" className="bg-[#141414]">Campur</option>
                        <option value="Putra" className="bg-[#141414]">Khusus Putra</option>
                        <option value="Putri" className="bg-[#141414]">Khusus Putri</option>
                      </select>
                    </div>
                    <div>
-                     <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">Kategori Kelas</label>
-                     <select value={isEdit ? editClass : newClass} onChange={(e) => isEdit ? setEditClass(e.target.value as any) : setNewClass(e.target.value as any)} className="w-full bg-transparent border-b border-[#2A2A2A] focus:border-white px-0 py-3 text-sm text-[#8A8A8A] focus:text-white focus:outline-none transition-colors">
+                     <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">Kategori Kelas</label>
+                     <select value={isEdit ? editClass : newClass} onChange={(e) => isEdit ? setEditClass(e.target.value as any) : setNewClass(e.target.value as any)} className="w-full bg-transparent border-b border-[#2A2A2A] focus:border-white px-0 py-3 text-sm text-[#A3A3A3] focus:text-white focus:outline-none transition-colors">
                        <option value="Standar" className="bg-[#141414]">Standar</option>
                        <option value="VIP" className="bg-[#141414]">VIP</option>
                        <option value="Eksklusif" className="bg-[#141414]">Eksklusif</option>
@@ -417,12 +417,12 @@ export default function DashboardOwner({
 
                  <div className="grid grid-cols-2 gap-6">
                    <div>
-                     <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">Jumlah Total Kamar</label>
+                     <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">Jumlah Total Kamar</label>
                      <input type="number" required value={isEdit ? editTotalRooms : newTotalRooms} onChange={(e) => isEdit ? setEditTotalRooms(Number(e.target.value)) : setNewTotalRooms(Number(e.target.value))} className="w-full bg-transparent border-b border-[#2A2A2A] focus:border-white px-0 py-3 text-sm text-white focus:outline-none transition-colors" />
                    </div>
                    {isEdit && (
                      <div>
-                       <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">Kamar Kosong Tersedia</label>
+                       <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">Kamar Kosong Tersedia</label>
                        <input type="number" required value={editAvailableRooms} onChange={(e) => setEditAvailableRooms(Number(e.target.value))} className="w-full bg-transparent border-b border-[#2A2A2A] focus:border-white px-0 py-3 text-sm text-white focus:outline-none transition-colors" />
                      </div>
                    )}
@@ -432,11 +432,11 @@ export default function DashboardOwner({
                <div className="space-y-6">
                  <h3 className="text-xs font-bold uppercase tracking-widest text-[#B0B0B0] border-b border-[#1C1C1C] pb-3">2. Lokasi & Deskripsi</h3>
                  <div>
-                   <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">Alamat Lengkap</label>
+                   <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">Alamat Lengkap</label>
                    <input type="text" required value={isEdit ? editAddress : newAddress} onChange={(e) => isEdit ? setEditAddress(e.target.value) : setNewAddress(e.target.value)} className="w-full bg-transparent border-b border-[#2A2A2A] focus:border-white px-0 py-3 text-sm text-white focus:outline-none transition-colors" placeholder="Jl. Merdeka No 15B, Menteng" />
                  </div>
                  <div>
-                   <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">Deskripsi Properti</label>
+                   <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">Deskripsi Properti</label>
                    <textarea rows={4} value={isEdit ? editDescription : newDescription} onChange={(e) => isEdit ? setEditDescription(e.target.value) : setNewDescription(e.target.value)} className="w-full bg-transparent border-b border-[#2A2A2A] focus:border-white px-0 py-3 text-sm text-white focus:outline-none transition-colors resize-none" placeholder="Ceritakan kelebihan unik kos Anda..." />
                  </div>
                </div>
@@ -447,17 +447,17 @@ export default function DashboardOwner({
                <div className="space-y-6">
                  <h3 className="text-xs font-bold uppercase tracking-widest text-[#B0B0B0] border-b border-[#1C1C1C] pb-3 flex items-center justify-between">
                    <span>3. Media Visual</span>
-                   <span className="text-[#5A5A5A] font-normal text-[10px] bg-[#141414] px-2 py-0.5 rounded border border-[#1C1C1C]">Cover + {(isEdit ? editAdditionalImages : newAdditionalImages).length} Extra</span>
+                   <span className="text-[#808080] font-normal text-[10px] bg-[#141414] px-2 py-0.5 rounded border border-[#1C1C1C]">Cover + {(isEdit ? editAdditionalImages : newAdditionalImages).length} Extra</span>
                  </h3>
                  
                  <div className="space-y-4">
                    <div>
-                     <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">Foto Utama (URL Cover)</label>
+                     <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">Foto Utama (URL Cover)</label>
                      <input type="text" value={isEdit ? editImage : newImage} onChange={(e) => isEdit ? setEditImage(e.target.value) : setNewImage(e.target.value)} className="w-full bg-transparent border-b border-[#2A2A2A] focus:border-white px-0 py-3 text-sm text-white focus:outline-none transition-colors" placeholder="https://..." />
                    </div>
                    
                    <div className="flex items-center justify-between pt-2">
-                     <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest">Tambah Galeri Ekstra</label>
+                     <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest">Tambah Galeri Ekstra</label>
                    </div>
                    
                    <div className="flex gap-3">
@@ -469,7 +469,7 @@ export default function DashboardOwner({
                          onChange={(e) => handleFileUpload(e, isEdit)}
                          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                        />
-                       <div className="w-full h-12 bg-[#141414] border border-[#2A2A2A] rounded-xl flex items-center justify-center gap-2 text-sm text-[#8A8A8A] transition-colors group-hover:bg-[#1C1C1C]">
+                       <div className="w-full h-12 bg-[#141414] border border-[#2A2A2A] rounded-xl flex items-center justify-center gap-2 text-sm text-[#A3A3A3] transition-colors group-hover:bg-[#1C1C1C]">
                          <UploadCloud className="w-4 h-4" />
                          <span>Upload Lokal (.png, .jpg)</span>
                        </div>
@@ -521,7 +521,7 @@ export default function DashboardOwner({
                          className={`py-3 px-4 rounded-xl border text-left font-medium text-xs flex items-center justify-between cursor-pointer transition-colors ${
                            isChecked 
                              ? 'bg-[#1C1C1C] text-white border-[#5A5A5A]' 
-                             : 'bg-transparent border-[#1C1C1C] text-[#5A5A5A] hover:border-[#2A2A2A]'
+                             : 'bg-transparent border-[#1C1C1C] text-[#808080] hover:border-[#2A2A2A]'
                          }`}
                        >
                          <span>{fac}</span>
@@ -551,10 +551,10 @@ export default function DashboardOwner({
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#2A2A2A] pb-6">
         <div>
           <h1 className="text-2xl md:text-3xl font-sans font-black text-white flex items-center gap-2.5">
-            <Building className="w-8 h-8 text-[#8A8A8A]" />
+            <Building className="w-8 h-8 text-[#A3A3A3]" />
             CONTROL CENTER OWNER
           </h1>
-          <p className="text-xs text-[#5A5A5A] mt-1 font-sans">
+          <p className="text-xs text-[#808080] mt-1 font-sans">
             Kelola statistik hunian kost, pantau konfirmasi pembayaran, edit fasilitas kamar, dan pasang iklan properti baru dalam real-time.
           </p>
         </div>
@@ -576,7 +576,7 @@ export default function DashboardOwner({
           className={`px-4 py-2 text-xs font-mono uppercase tracking-widest font-bold transition-all rounded-lg cursor-pointer ${
             activeTab === 'dashboard'
               ? 'bg-white text-black'
-              : 'text-[#5A5A5A] hover:text-white hover:bg-white/5 border border-transparent'
+              : 'text-[#808080] hover:text-white hover:bg-white/5 border border-transparent'
           }`}
         >
           Statistik & Properti
@@ -586,7 +586,7 @@ export default function DashboardOwner({
           className={`px-4 py-2 text-xs font-mono uppercase tracking-widest font-bold transition-all rounded-lg cursor-pointer ${
             activeTab === 'banners'
               ? 'bg-white text-black'
-              : 'text-[#5A5A5A] hover:text-white hover:bg-white/5 border border-transparent'
+              : 'text-[#808080] hover:text-white hover:bg-white/5 border border-transparent'
           }`}
         >
           Pengaturan Slider Hero
@@ -599,13 +599,13 @@ export default function DashboardOwner({
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Card 1: Revenue Month */}
         <div className="bg-[#141414] border border-[#2A2A2A] rounded-2xl p-5 flex items-center gap-4">
-          <div className="p-3 bg-[#1C1C1C] rounded-xl border border-[#2A2A2A] text-[#8A8A8A]">
+          <div className="p-3 bg-[#1C1C1C] rounded-xl border border-[#2A2A2A] text-[#A3A3A3]">
             <DollarSign className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-xs text-[#5A5A5A] font-mono uppercase tracking-wider">Pendapatan (Jun)</p>
+            <p className="text-xs text-[#808080] font-mono uppercase tracking-wider">Pendapatan (Jun)</p>
             <p className="text-xl font-sans font-black text-white mt-1">Rp 75.000.000</p>
-            <div className="text-[11px] text-[#8A8A8A] flex items-center gap-1 mt-0.5 font-medium">
+            <div className="text-[11px] text-[#A3A3A3] flex items-center gap-1 mt-0.5 font-medium">
               <TrendingUp className="w-3.5 h-3.5 inline" />
               <span>+10.3% bln lalu</span>
             </div>
@@ -614,13 +614,13 @@ export default function DashboardOwner({
 
         {/* Card 2: Occupancy Percentage */}
         <div className="bg-[#141414] border border-[#2A2A2A] rounded-2xl p-5 flex items-center gap-4">
-          <div className="p-3 bg-[#1C1C1C] rounded-xl border border-[#2A2A2A] text-[#8A8A8A]">
+          <div className="p-3 bg-[#1C1C1C] rounded-xl border border-[#2A2A2A] text-[#A3A3A3]">
             <Home className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-xs text-[#5A5A5A] font-mono uppercase tracking-wider">Rasio Hunian</p>
+            <p className="text-xs text-[#808080] font-mono uppercase tracking-wider">Rasio Hunian</p>
             <p className="text-xl font-sans font-black text-white mt-1">{occupancyPercentage}%</p>
-            <p className="text-[11px] text-[#5A5A5A] mt-0.5 font-sans">
+            <p className="text-[11px] text-[#808080] mt-0.5 font-sans">
               {occupiedRooms} dari {totalCapacity} kamar terisi
             </p>
           </div>
@@ -628,13 +628,13 @@ export default function DashboardOwner({
 
         {/* Card 3: Total properties listed */}
         <div className="bg-[#141414] border border-[#2A2A2A] rounded-2xl p-5 flex items-center gap-4">
-          <div className="p-3 bg-[#1C1C1C] rounded-xl border border-[#2A2A2A] text-[#8A8A8A]">
+          <div className="p-3 bg-[#1C1C1C] rounded-xl border border-[#2A2A2A] text-[#A3A3A3]">
             <Building className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-xs text-[#5A5A5A] font-mono uppercase tracking-wider">Total Properti</p>
+            <p className="text-xs text-[#808080] font-mono uppercase tracking-wider">Total Properti</p>
             <p className="text-xl font-sans font-black text-white mt-1">{totalProperties} Kost</p>
-            <p className="text-[11px] text-[#5A5A5A] mt-0.5 font-sans">
+            <p className="text-[11px] text-[#808080] mt-0.5 font-sans">
               {totalAvailableRooms} kamar kosong sisa
             </p>
           </div>
@@ -642,15 +642,15 @@ export default function DashboardOwner({
 
         {/* Card 4: Active Bookings */}
         <div className="bg-[#141414] border border-[#2A2A2A] rounded-2xl p-5 flex items-center gap-4">
-          <div className="p-3 bg-[#1C1C1C] rounded-xl border border-[#2A2A2A] text-[#8A8A8A]">
+          <div className="p-3 bg-[#1C1C1C] rounded-xl border border-[#2A2A2A] text-[#A3A3A3]">
             <Users className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-xs text-[#5A5A5A] font-mono uppercase tracking-wider">Booking Pending</p>
+            <p className="text-xs text-[#808080] font-mono uppercase tracking-wider">Booking Pending</p>
             <p className="text-xl font-sans font-black text-white mt-1">
               {bookings.filter(b => b.status === 'Pending').length} Pengajuan
             </p>
-            <p className="text-[11px] text-[#8A8A8A] mt-0.5 animate-pulse font-mono tracking-wide">
+            <p className="text-[11px] text-[#A3A3A3] mt-0.5 animate-pulse font-mono tracking-wide">
               BUTUH PERSETUJUAN
             </p>
           </div>
@@ -661,7 +661,7 @@ export default function DashboardOwner({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Revenue Progression Line chart - 7 Columns */}
         <div className="lg:col-span-8 bg-[#141414] border border-[#2A2A2A] p-5 md:p-6 rounded-2xl">
-          <h3 className="font-sans font-bold text-xs uppercase tracking-wider text-[#5A5A5A] mb-6 flex items-center gap-2">
+          <h3 className="font-sans font-bold text-xs uppercase tracking-wider text-[#808080] mb-6 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#8A8A8A] animate-pulse"></span>
             Laporan Grafik Pendapatan Bulanan (IDR)
           </h3>
@@ -702,7 +702,7 @@ export default function DashboardOwner({
         {/* Right Column: Donut chart sharing Occupancy metrics - 4 Columns */}
         <div className="lg:col-span-4 bg-[#141414] border border-[#2A2A2A] p-5 md:p-6 rounded-2xl flex flex-col justify-between">
           <div>
-            <h3 className="font-sans font-bold text-xs uppercase tracking-wider text-[#5A5A5A] mb-5 flex items-center gap-2">
+            <h3 className="font-sans font-bold text-xs uppercase tracking-wider text-[#808080] mb-5 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#8A8A8A]"></span>
               Metrik Ketersediaan Unit
             </h3>
@@ -736,7 +736,7 @@ export default function DashboardOwner({
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#2A2A2A] space-y-2.5">
-            <div className="flex items-center justify-between text-xs text-[#8A8A8A]">
+            <div className="flex items-center justify-between text-xs text-[#A3A3A3]">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#B0B0B0]"></span>
                 <span>Hunian Terisi (Rent)</span>
@@ -744,12 +744,12 @@ export default function DashboardOwner({
               <span className="font-mono font-semibold text-white">{occupiedRooms} Kamar</span>
             </div>
             
-            <div className="flex items-center justify-between text-xs text-[#8A8A8A]">
+            <div className="flex items-center justify-between text-xs text-[#A3A3A3]">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#1C1C1C]"></span>
                 <span>Kosong & Siap Sewa</span>
               </div>
-              <span className="font-mono text-[#5A5A5A]">{totalAvailableRooms} Kamar</span>
+              <span className="font-mono text-[#808080]">{totalAvailableRooms} Kamar</span>
             </div>
           </div>
         </div>
@@ -759,7 +759,7 @@ export default function DashboardOwner({
       <div className="bg-[#141414] border border-[#2A2A2A] rounded-2xl overflow-hidden">
         <div className="px-6 py-5 border-b border-[#2A2A2A] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <h2 className="text-sm font-sans font-bold text-white uppercase tracking-wider flex items-center gap-2">
-            <FileText className="w-4 h-4 text-[#6B6B6B]" />
+            <FileText className="w-4 h-4 text-[#949494]" />
             Agenda & Daftar Reservasi Kost
           </h2>
 
@@ -769,7 +769,7 @@ export default function DashboardOwner({
               className={`px-3 py-1.5 rounded-lg text-[10px] font-mono uppercase tracking-wider font-bold transition-all cursor-pointer ${
                 bookingTab === 'all' 
                   ? 'bg-white text-black' 
-                  : 'text-[#5A5A5A] hover:text-white hover:bg-white/5'
+                  : 'text-[#808080] hover:text-white hover:bg-white/5'
               }`}
             >
               Semua ({bookings.length})
@@ -779,7 +779,7 @@ export default function DashboardOwner({
               className={`px-3 py-1.5 rounded-lg text-[10px] font-mono uppercase tracking-wider font-bold transition-all cursor-pointer ${
                 bookingTab === 'pending' 
                   ? 'bg-white text-black' 
-                  : 'text-[#5A5A5A] hover:text-white hover:bg-white/5'
+                  : 'text-[#808080] hover:text-white hover:bg-white/5'
               }`}
             >
               Pending ({bookings.filter(b => b.status === 'Pending').length})
@@ -789,7 +789,7 @@ export default function DashboardOwner({
               className={`px-3 py-1.5 rounded-lg text-[10px] font-mono uppercase tracking-wider font-bold transition-all cursor-pointer ${
                 bookingTab === 'current' 
                   ? 'bg-white text-black' 
-                  : 'text-[#5A5A5A] hover:text-white hover:bg-white/5'
+                  : 'text-[#808080] hover:text-white hover:bg-white/5'
               }`}
               title="Sewa aktif terkonfirmasi dengan tanggal mulai <= hari ini"
             >
@@ -800,7 +800,7 @@ export default function DashboardOwner({
               className={`px-3 py-1.5 rounded-lg text-[10px] font-mono uppercase tracking-wider font-bold transition-all cursor-pointer ${
                 bookingTab === 'upcoming' 
                   ? 'bg-white text-black' 
-                  : 'text-[#5A5A5A] hover:text-white hover:bg-white/5'
+                  : 'text-[#808080] hover:text-white hover:bg-white/5'
               }`}
               title="Sewa disetujui untuk waktu di masa depan"
             >
@@ -811,14 +811,14 @@ export default function DashboardOwner({
 
         <div className="divide-y divide-[#2A2A2A] custom-scrollbar overflow-x-auto">
           {filteredBookings.length === 0 ? (
-            <div className="p-12 text-center text-[#5A5A5A] text-xs flex flex-col items-center justify-center gap-2">
+            <div className="p-12 text-center text-[#808080] text-xs flex flex-col items-center justify-center gap-2">
               <Clock className="w-6 h-6 text-[#3A3A3A]" />
               <span>Belum ada reservasi dalam kategori ini.</span>
             </div>
           ) : (
             <table className="w-full text-left border-collapse min-w-[700px]">
               <thead>
-                <tr className="bg-[#0A0A0A] text-[#5A5A5A] text-[11px] font-mono uppercase tracking-wider border-b border-[#2A2A2A]">
+                <tr className="bg-[#0A0A0A] text-[#808080] text-[11px] font-mono uppercase tracking-wider border-b border-[#2A2A2A]">
                   <th className="p-4">Calon Penyewa</th>
                   <th className="p-4">Properti Kost</th>
                   <th className="p-4">Tanggal Mulai</th>
@@ -838,17 +838,17 @@ export default function DashboardOwner({
                       <td className="p-4">
                         <div>
                           <p className="font-semibold text-white font-sans">{booking.userName}</p>
-                          <p className="text-[10px] text-[#5A5A5A] font-mono mt-0.5">{booking.userPhone}</p>
+                          <p className="text-[10px] text-[#808080] font-mono mt-0.5">{booking.userPhone}</p>
                         </div>
                       </td>
                       <td className="p-4 text-[#B0B0B0]">
                         <p className="font-medium">{booking.kostName}</p>
-                        <p className="text-[10px] text-[#5A5A5A] font-mono mt-0.5">Metode: {booking.paymentMethod}</p>
+                        <p className="text-[10px] text-[#808080] font-mono mt-0.5">Metode: {booking.paymentMethod}</p>
                       </td>
                       <td className="p-4 text-[#B0B0B0] font-mono font-semibold">
                         {booking.startDate}
                       </td>
-                      <td className="p-4 font-semibold font-mono text-[#6B6B6B]">
+                      <td className="p-4 font-semibold font-mono text-[#949494]">
                         {booking.duration} Bulan
                       </td>
                       <td className="p-4 text-white font-bold font-mono">
@@ -856,7 +856,7 @@ export default function DashboardOwner({
                       </td>
                       <td className="p-4 text-center">
                         {booking.status === 'Pending' ? (
-                          <span className="text-[9px] font-mono bg-[#1C1C1C] border border-[#3A3A3A] px-2.5 py-1 rounded text-[#8A8A8A]">
+                          <span className="text-[9px] font-mono bg-[#1C1C1C] border border-[#3A3A3A] px-2.5 py-1 rounded text-[#A3A3A3]">
                             VERIFIKASI
                           </span>
                         ) : isCurrent ? (
@@ -868,7 +868,7 @@ export default function DashboardOwner({
                             UPCOMING (FUTUR)
                           </span>
                         ) : (
-                          <span className="text-[9px] font-mono bg-[#1C1C1C] border border-[#2A2A2A] px-2.5 py-1 rounded text-[#5A5A5A]">
+                          <span className="text-[9px] font-mono bg-[#1C1C1C] border border-[#2A2A2A] px-2.5 py-1 rounded text-[#808080]">
                             REJECTED
                           </span>
                         )}
@@ -894,8 +894,8 @@ export default function DashboardOwner({
                              </button>
                           </div>
                         ) : (
-                          <span className="text-[10px] text-[#5A5A5A] font-mono flex items-center justify-end gap-1 font-semibold">
-                            <ShieldCheck className="w-3.5 h-3.5 text-[#8A8A8A]" />
+                          <span className="text-[10px] text-[#808080] font-mono flex items-center justify-end gap-1 font-semibold">
+                            <ShieldCheck className="w-3.5 h-3.5 text-[#A3A3A3]" />
                             Tercatat
                           </span>
                         )}
@@ -911,9 +911,9 @@ export default function DashboardOwner({
 
       {/* Active Listings Grid with Edit capabilities */}
       <div className="space-y-4">
-        <h3 className="font-sans font-bold text-sm uppercase tracking-wider text-[#5A5A5A] flex items-center gap-2">
+        <h3 className="font-sans font-bold text-sm uppercase tracking-wider text-[#808080] flex items-center gap-2">
           <span>Daftar Unit Kost Pemilik Ahmad Gede</span>
-          <span className="text-xs bg-white/5 text-[#8A8A8A] px-2 py-0.5 rounded-full border border-[#2A2A2A] font-mono">
+          <span className="text-xs bg-white/5 text-[#A3A3A3] px-2 py-0.5 rounded-full border border-[#2A2A2A] font-mono">
             {kostList.length} Iklan Aktif
           </span>
         </h3>
@@ -942,18 +942,18 @@ export default function DashboardOwner({
                 <div className="flex items-center justify-between mb-1.5 align-middle">
                   <h4 className="text-sm font-bold text-white truncate max-w-[180px]">{kost.name}</h4>
                   <span className="text-xs font-bold text-white font-mono shrink-0">
-                    {formatRupiah(kost.price)}<span className="text-[9px] font-normal text-[#5A5A5A]">/bln</span>
+                    {formatRupiah(kost.price)}<span className="text-[9px] font-normal text-[#808080]">/bln</span>
                   </span>
                 </div>
                 
-                <p className="text-[11px] text-[#5A5A5A] mt-1 flex items-center gap-1 font-sans">
-                  <MapPin className="w-3.5 h-3.5 text-[#6B6B6B]" />
+                <p className="text-[11px] text-[#808080] mt-1 flex items-center gap-1 font-sans">
+                  <MapPin className="w-3.5 h-3.5 text-[#949494]" />
                   {kost.location}
                 </p>
               </div>
 
               <div className="mt-4 pt-3 border-t border-[#2A2A2A]">
-                <div className="flex items-center justify-between text-[11px] text-[#6B6B6B] font-mono font-medium mb-3">
+                <div className="flex items-center justify-between text-[11px] text-[#949494] font-mono font-medium mb-3">
                   <span>Kapasitas: {kost.totalRooms} Kamar</span>
                   <span>Sisa Kosong: <strong className="text-white">{kost.availableRooms}</strong></span>
                 </div>
@@ -961,7 +961,7 @@ export default function DashboardOwner({
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => handleStartEdit(kost)}
-                    className="flex-1 py-2 bg-[#1C1C1C] border border-[#2A2A2A] hover:bg-[#2A2A2A] rounded-xl text-xs font-semibold hover:text-white text-[#6B6B6B] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="flex-1 py-2 bg-[#1C1C1C] border border-[#2A2A2A] hover:bg-[#2A2A2A] rounded-xl text-xs font-semibold hover:text-white text-[#949494] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                   >
                     <Edit2 className="w-3.5 h-3.5" />
                     Edit Properti
@@ -991,12 +991,12 @@ export default function DashboardOwner({
             <div className="max-w-3xl bg-[#141414] border border-[#2A2A2A] rounded-2xl p-6 md:p-8 animate-in slide-in-from-bottom duration-300">
               <div className="flex items-center justify-between border-b border-[#2A2A2A] pb-4 mb-6">
                 <h3 className="text-base font-bold font-display uppercase tracking-wide flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#8A8A8A]" />
+                  <Sparkles className="w-4 h-4 text-[#A3A3A3]" />
                   {editingBanner ? 'Edit Banner Slider' : 'Tambah Banner Baru'}
                 </h3>
                 <button 
                   onClick={() => { setShowAddBannerForm(false); setEditingBanner(null); }}
-                  className="text-xs text-[#5A5A5A] hover:text-white font-mono uppercase tracking-widest cursor-pointer"
+                  className="text-xs text-[#808080] hover:text-white font-mono uppercase tracking-widest cursor-pointer"
                 >
                   Kembali
                 </button>
@@ -1004,7 +1004,7 @@ export default function DashboardOwner({
 
               <form onSubmit={handleSaveBanner} className="space-y-6">
                 <div>
-                  <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">Judul Banner</label>
+                  <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">Judul Banner</label>
                   <input
                     type="text"
                     required
@@ -1016,7 +1016,7 @@ export default function DashboardOwner({
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">Sub-Judul / Deskripsi Pendek</label>
+                  <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">Sub-Judul / Deskripsi Pendek</label>
                   <input
                     type="text"
                     required
@@ -1029,7 +1029,7 @@ export default function DashboardOwner({
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">Urutan Tampil (Order)</label>
+                    <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">Urutan Tampil (Order)</label>
                     <input
                       type="number"
                       required
@@ -1042,9 +1042,9 @@ export default function DashboardOwner({
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">File Gambar (Unggah)</label>
+                    <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">File Gambar (Unggah)</label>
                     <div className="flex items-center gap-3">
-                      <label className="flex-1 h-12 border border-[#2A2A2A] border-dashed rounded-xl flex items-center justify-center gap-2 text-[#5A5A5A] hover:text-white hover:border-[#5A5A5A] transition-colors cursor-pointer bg-[#0A0A0A] text-xs font-semibold">
+                      <label className="flex-1 h-12 border border-[#2A2A2A] border-dashed rounded-xl flex items-center justify-center gap-2 text-[#808080] hover:text-white hover:border-[#5A5A5A] transition-colors cursor-pointer bg-[#0A0A0A] text-xs font-semibold">
                         <UploadCloud className="w-4 h-4" />
                         <span>Pilih File PNG/JPG</span>
                         <input
@@ -1059,7 +1059,7 @@ export default function DashboardOwner({
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">ATAU Link URL Gambar</label>
+                  <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">ATAU Link URL Gambar</label>
                   <input
                     type="text"
                     placeholder="https://images.unsplash.com/..."
@@ -1069,7 +1069,7 @@ export default function DashboardOwner({
                     className="w-full h-12 px-4 bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl text-sm text-white placeholder:text-[#3A3A3A] focus:border-[#5A5A5A] outline-none transition-colors disabled:opacity-50"
                   />
                   {bannerImage.startsWith('data:') && (
-                    <p className="text-[10px] text-[#8A8A8A] font-mono mt-1">
+                    <p className="text-[10px] text-[#A3A3A3] font-mono mt-1">
                       * Gambar saat ini diunggah via file. Klik "Reset Gambar" untuk memasukkan URL.
                     </p>
                   )}
@@ -1077,7 +1077,7 @@ export default function DashboardOwner({
 
                 {bannerImage && (
                   <div className="space-y-2">
-                    <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest">Pratinjau Gambar</label>
+                    <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest">Pratinjau Gambar</label>
                     <div className="relative w-full max-w-sm aspect-[16/9] bg-[#0A0A0A] border border-[#2A2A2A] rounded-xl overflow-hidden">
                       <img src={bannerImage} alt="Banner Preview" className="w-full h-full object-cover" />
                       <button
@@ -1112,9 +1112,9 @@ export default function DashboardOwner({
           ) : (
             <div className="space-y-6">
               <div className="flex items-center justify-between border-b border-[#2A2A2A] pb-4">
-                <h3 className="font-sans font-bold text-sm uppercase tracking-wider text-[#5A5A5A] flex items-center gap-2">
+                <h3 className="font-sans font-bold text-sm uppercase tracking-wider text-[#808080] flex items-center gap-2">
                   <span>Daftar Banner Slider Hero</span>
-                  <span className="text-xs bg-white/5 text-[#8A8A8A] px-2 py-0.5 rounded-full border border-[#2A2A2A] font-mono">
+                  <span className="text-xs bg-white/5 text-[#A3A3A3] px-2 py-0.5 rounded-full border border-[#2A2A2A] font-mono">
                     {banners.length} Aktif
                   </span>
                 </h3>
@@ -1128,7 +1128,7 @@ export default function DashboardOwner({
               </div>
 
               {banners.length === 0 ? (
-                <div className="p-16 border border-dashed border-[#2A2A2A] text-center rounded-2xl text-[#5A5A5A] text-xs">
+                <div className="p-16 border border-dashed border-[#2A2A2A] text-center rounded-2xl text-[#808080] text-xs">
                   <span>Belum ada banner slider terpasang. Klik "Tambah Banner" di atas untuk menambahkan.</span>
                 </div>
               ) : (
@@ -1143,13 +1143,13 @@ export default function DashboardOwner({
                           </div>
                         </div>
                         <h4 className="text-sm font-bold text-white tracking-wide truncate mb-1">{banner.title}</h4>
-                        <p className="text-xs text-[#5A5A5A] leading-relaxed line-clamp-2">{banner.subtitle}</p>
+                        <p className="text-xs text-[#808080] leading-relaxed line-clamp-2">{banner.subtitle}</p>
                       </div>
 
                       <div className="mt-4 pt-3 border-t border-[#2A2A2A] flex items-center gap-2">
                         <button
                           onClick={() => handleStartEditBanner(banner)}
-                          className="flex-1 py-2 bg-[#1C1C1C] border border-[#2A2A2A] hover:bg-[#2A2A2A] rounded-xl text-xs font-semibold hover:text-white text-[#6B6B6B] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                          className="flex-1 py-2 bg-[#1C1C1C] border border-[#2A2A2A] hover:bg-[#2A2A2A] rounded-xl text-xs font-semibold hover:text-white text-[#949494] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                         >
                           <Edit2 className="w-3.5 h-3.5" />
                           Edit

@@ -37,9 +37,9 @@ export default function UserProfilePage({ bookings }: UserProfilePageProps) {
   if (!session) {
     return (
       <div className="flex flex-col items-center justify-center p-16 bg-[#141414] rounded-2xl border border-[#2A2A2A] max-w-md mx-auto my-12 text-center">
-        <ShieldAlert className="w-12 h-12 text-[#5A5A5A] mb-4" />
+        <ShieldAlert className="w-12 h-12 text-[#808080] mb-4" />
         <h3 className="text-white font-sans font-bold text-lg">Akses Terbatas</h3>
-        <p className="text-[#5A5A5A] text-xs mt-2 leading-relaxed">
+        <p className="text-[#808080] text-xs mt-2 leading-relaxed">
           Silakan masuk melalui panel login terlebih dahulu untuk mengakses data profil personal Anda.
         </p>
       </div>
@@ -94,22 +94,22 @@ export default function UserProfilePage({ bookings }: UserProfilePageProps) {
           <div className="text-center md:text-left">
             <div className="flex items-center gap-2.5 justify-center md:justify-start">
               <h2 className="text-xl md:text-2xl font-sans font-black text-white">{session.user.name}</h2>
-              <span className="text-[9px] font-mono uppercase bg-white/5 text-[#8A8A8A] border border-[#2A2A2A] px-2.5 py-0.5 rounded-full font-bold">
+              <span className="text-[9px] font-mono uppercase bg-white/5 text-[#A3A3A3] border border-[#2A2A2A] px-2.5 py-0.5 rounded-full font-bold">
                 {session.user.role} Verified
               </span>
             </div>
             
-            <p className="text-xs text-[#5A5A5A] mt-1 font-sans font-light max-w-md">
+            <p className="text-xs text-[#808080] mt-1 font-sans font-light max-w-md">
               {session.user.bio || 'Belum ada deskripsi profil bio ditambahkan.'}
             </p>
             
-            <div className="flex flex-wrap gap-x-4 gap-y-1.5 mt-3 justify-center md:justify-start text-xs text-[#5A5A5A] font-mono">
+            <div className="flex flex-wrap gap-x-4 gap-y-1.5 mt-3 justify-center md:justify-start text-xs text-[#808080] font-mono">
               <span className="flex items-center gap-1">
-                <Calendar className="w-3.5 h-3.5 text-[#6B6B6B]" />
+                <Calendar className="w-3.5 h-3.5 text-[#949494]" />
                 Gabung: {session.user.joinedDate || '2026-06-12'}
               </span>
               <span className="flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5 text-[#6B6B6B]" />
+                <MapPin className="w-3.5 h-3.5 text-[#949494]" />
                 {session.user.address || 'DKI Jakarta'}
               </span>
             </div>
@@ -127,7 +127,7 @@ export default function UserProfilePage({ bookings }: UserProfilePageProps) {
           
           <button
             onClick={signOut}
-            className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-[#2A2A2A] text-[#8A8A8A] hover:text-white rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5"
+            className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-[#2A2A2A] text-[#A3A3A3] hover:text-white rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5"
           >
             <LogOut className="w-3.5 h-3.5" />
             Keluar akun
@@ -138,62 +138,62 @@ export default function UserProfilePage({ bookings }: UserProfilePageProps) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left column: Full editable details form */}
         <div className="lg:col-span-4 bg-[#141414] border border-[#2A2A2A] rounded-2xl p-5 md:p-6 space-y-6">
-          <h3 className="font-sans font-black text-xs uppercase tracking-wider text-[#5A5A5A] flex items-center gap-2">
-            <User className="w-4 h-4 text-[#6B6B6B]" />
+          <h3 className="font-sans font-black text-xs uppercase tracking-wider text-[#808080] flex items-center gap-2">
+            <User className="w-4 h-4 text-[#949494]" />
             Detail Identifikasi Personal
           </h3>
 
           {isEditing ? (
             <form onSubmit={handleSaveProfile} className="space-y-4">
               <div>
-                <label className="block text-[10px] font-mono uppercase text-[#5A5A5A] tracking-wider mb-1">Nama Lengkap</label>
+                <label className="block text-[10px] font-mono uppercase text-[#808080] tracking-wider mb-1">Nama Lengkap</label>
                 <input
                   type="text"
                   required
                   value={editName}
                   onChange={(e) => setEditName(e.target.value)}
-                  className="w-full bg-[#1C1C1C] border border-[#2A2A2A] rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#5A5A5A]"
+                  className="w-full bg-[#1C1C1C] border border-[#2A2A2A] rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#808080]"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-mono uppercase text-[#5A5A5A] tracking-wider mb-1">Email Klien</label>
+                <label className="block text-[10px] font-mono uppercase text-[#808080] tracking-wider mb-1">Email Klien</label>
                 <input
                   type="email"
                   required
                   value={editEmail}
                   onChange={(e) => setEditEmail(e.target.value)}
-                  className="w-full bg-[#1C1C1C] border border-[#2A2A2A] rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#5A5A5A]"
+                  className="w-full bg-[#1C1C1C] border border-[#2A2A2A] rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#808080]"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-mono uppercase text-[#5A5A5A] tracking-wider mb-1">No WhatsApp</label>
+                <label className="block text-[10px] font-mono uppercase text-[#808080] tracking-wider mb-1">No WhatsApp</label>
                 <input
                   type="text"
                   value={editPhone}
                   onChange={(e) => setEditPhone(e.target.value)}
-                  className="w-full bg-[#1C1C1C] border border-[#2A2A2A] rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#5A5A5A]"
+                  className="w-full bg-[#1C1C1C] border border-[#2A2A2A] rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#808080]"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-mono uppercase text-[#5A5A5A] tracking-wider mb-1">Alamat Asal</label>
+                <label className="block text-[10px] font-mono uppercase text-[#808080] tracking-wider mb-1">Alamat Asal</label>
                 <input
                   type="text"
                   value={editAddress}
                   onChange={(e) => setEditAddress(e.target.value)}
-                  className="w-full bg-[#1C1C1C] border border-[#2A2A2A] rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#5A5A5A]"
+                  className="w-full bg-[#1C1C1C] border border-[#2A2A2A] rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#808080]"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-mono uppercase text-[#5A5A5A] tracking-wider mb-1">Biografi/Minat Hunian</label>
+                <label className="block text-[10px] font-mono uppercase text-[#808080] tracking-wider mb-1">Biografi/Minat Hunian</label>
                 <textarea
                   rows={3}
                   value={editBio}
                   onChange={(e) => setEditBio(e.target.value)}
-                  className="w-full bg-[#1C1C1C] border border-[#2A2A2A] rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#5A5A5A] resize-none"
+                  className="w-full bg-[#1C1C1C] border border-[#2A2A2A] rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#808080] resize-none"
                 />
               </div>
 
@@ -201,7 +201,7 @@ export default function UserProfilePage({ bookings }: UserProfilePageProps) {
                 <button
                   type="button"
                   onClick={() => setIsEditing(false)}
-                  className="flex-1 py-2 rounded-xl border border-[#2A2A2A] hover:bg-white/5 text-xs font-bold text-[#6B6B6B] hover:text-white"
+                  className="flex-1 py-2 rounded-xl border border-[#2A2A2A] hover:bg-white/5 text-xs font-bold text-[#949494] hover:text-white"
                 >
                   <X className="w-3.5 h-3.5 inline mr-1" />
                   Batal
@@ -219,34 +219,34 @@ export default function UserProfilePage({ bookings }: UserProfilePageProps) {
             <div className="space-y-4 text-xs">
               <div className="flex items-center justify-between pb-3 border-b border-[#2A2A2A]">
                 <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-[#5A5A5A]" />
-                  <span className="text-[#5A5A5A]">Alamat Email</span>
+                  <Mail className="w-4 h-4 text-[#808080]" />
+                  <span className="text-[#808080]">Alamat Email</span>
                 </div>
                 <span className="font-semibold text-white">{session.user.email}</span>
               </div>
 
               <div className="flex items-center justify-between pb-3 border-b border-[#2A2A2A]">
                 <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-[#5A5A5A]" />
-                  <span className="text-[#5A5A5A]">Kontak Ponsel</span>
+                  <Phone className="w-4 h-4 text-[#808080]" />
+                  <span className="text-[#808080]">Kontak Ponsel</span>
                 </div>
                 <span className="font-mono font-semibold text-white">{session.user.phone || '-'}</span>
               </div>
 
               <div className="flex items-center justify-between pb-3 border-b border-[#2A2A2A]">
                 <div className="flex items-center gap-2">
-                  <Bookmark className="w-4 h-4 text-[#5A5A5A]" />
-                  <span className="text-[#5A5A5A]">Tipe Lisensi</span>
+                  <Bookmark className="w-4 h-4 text-[#808080]" />
+                  <span className="text-[#808080]">Tipe Lisensi</span>
                 </div>
                 <span className="font-mono bg-white/5 border border-[#2A2A2A] px-2 py-0.5 rounded text-white">{session.user.role}</span>
               </div>
 
               {/* Security info tips box */}
               <div className="bg-[#1C1C1C] border border-[#2A2A2A] rounded-xl p-3 flex gap-2.5 items-start">
-                <Info className="w-4 h-4 text-[#5A5A5A] shrink-0 mt-0.5" />
+                <Info className="w-4 h-4 text-[#808080] shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-bold text-white text-[10px] uppercase font-mono">Catatan Keamanan</h4>
-                  <p className="text-[10px] text-[#5A5A5A] mt-0.5 leading-relaxed">
+                  <p className="text-[10px] text-[#808080] mt-0.5 leading-relaxed">
                     Sesi aman Anda dilindungi oleh Token. Kredensial tidak akan diungkapkan kepada pihak eksternal non-terafiliasi.
                   </p>
                 </div>
@@ -258,16 +258,16 @@ export default function UserProfilePage({ bookings }: UserProfilePageProps) {
         {/* Right Column: Reservation / Booking status specific to user */}
         <div className="lg:col-span-8 space-y-6">
           <div className="bg-[#141414] border border-[#2A2A2A] rounded-2xl p-5 md:p-6">
-            <h3 className="font-sans font-black text-xs uppercase tracking-wider text-[#5A5A5A] mb-6 flex items-center gap-2">
-              <Bookmark className="w-4 h-4 text-[#6B6B6B]" />
+            <h3 className="font-sans font-black text-xs uppercase tracking-wider text-[#808080] mb-6 flex items-center gap-2">
+              <Bookmark className="w-4 h-4 text-[#949494]" />
               Riwayat Sewa Unit Kos Terdaftar ({myBookings.length})
             </h3>
 
             {myBookings.length === 0 ? (
-              <div className="py-12 text-center text-[#5A5A5A] max-w-sm mx-auto">
-                <Clock className="w-8 h-8 mx-auto text-[#3A3A3A] mb-3" />
+              <div className="py-12 text-center text-[#808080] max-w-sm mx-auto">
+                <Clock className="w-8 h-8 mx-auto text-[#606060] mb-3" />
                 <p className="text-xs font-semibold text-white">Belum Ada Riwayat Pemesanan</p>
-                <p className="text-[11px] text-[#5A5A5A] mt-1 leading-relaxed">
+                <p className="text-[11px] text-[#808080] mt-1 leading-relaxed">
                   Data pemesanan akan otomatis terakumulasi di sini setelah Anda mengajukan pemesanan di menu katalog kost.
                 </p>
               </div>
@@ -287,31 +287,31 @@ export default function UserProfilePage({ bookings }: UserProfilePageProps) {
                       />
                       <div>
                         <div className="flex items-center gap-1.5 flex-wrap">
-                          <span className="text-[8px] font-mono px-1.5 py-0.5 rounded bg-[#0A0A0A] border border-[#2A2A2A] font-bold text-[#5A5A5A]">
+                          <span className="text-[8px] font-mono px-1.5 py-0.5 rounded bg-[#0A0A0A] border border-[#2A2A2A] font-bold text-[#808080]">
                             {book.id.toUpperCase()}
                           </span>
                           {book.status === 'Pending' ? (
-                            <span className="text-[8px] font-mono px-1.5 py-0.5 rounded bg-[#0A0A0A] text-[#8A8A8A] border border-[#3A3A3A]">
+                            <span className="text-[8px] font-mono px-1.5 py-0.5 rounded bg-[#0A0A0A] text-[#A3A3A3] border border-[#606060]">
                               PENDING
                             </span>
                           ) : book.status === 'Disetujui' ? (
-                            <span className="text-[8px] font-mono px-1.5 py-0.5 rounded bg-[#0A0A0A] text-white border border-[#3A3A3A]">
+                            <span className="text-[8px] font-mono px-1.5 py-0.5 rounded bg-[#0A0A0A] text-white border border-[#606060]">
                               AKTIF SEWA
                             </span>
                           ) : (
-                            <span className="text-[8px] font-mono px-1.5 py-0.5 rounded bg-[#0A0A0A] text-[#5A5A5A] border border-[#2A2A2A]">
+                            <span className="text-[8px] font-mono px-1.5 py-0.5 rounded bg-[#0A0A0A] text-[#808080] border border-[#2A2A2A]">
                               DITOLAK
                             </span>
                           )}
                         </div>
 
                         <h4 className="font-bold text-white text-xs mt-1 truncate max-w-[240px]">{book.kostName}</h4>
-                        <p className="text-[10px] text-[#5A5A5A] font-mono mt-0.5">Durasi: {book.duration} Bulan • Mulai: {book.startDate}</p>
+                        <p className="text-[10px] text-[#808080] font-mono mt-0.5">Durasi: {book.duration} Bulan • Mulai: {book.startDate}</p>
                       </div>
                     </div>
 
                     <div className="sm:text-right flex sm:flex-col justify-between items-center sm:items-end border-t sm:border-y-0 border-[#2A2A2A] pt-2 sm:pt-0">
-                      <span className="text-[10px] text-[#5A5A5A] font-mono">Total Invoice</span>
+                      <span className="text-[10px] text-[#808080] font-mono">Total Invoice</span>
                       <span className="font-mono font-bold text-xs text-white mt-0.5">{formatRupiah(book.totalPrice)}</span>
                     </div>
                   </div>

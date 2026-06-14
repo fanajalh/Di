@@ -6,14 +6,12 @@ import {
   CreditCard, 
   XCircle, 
   TrendingUp, 
-  MapPin, 
   Loader2,
   Trash2,
   CheckCircle2,
   AlertCircle
 } from 'lucide-react';
 import { Booking } from '../types';
-import { toast } from './Toast';
 
 interface DashboardBuyerProps {
   bookings: Booking[];
@@ -68,7 +66,7 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
   );
 
   return (
-    <div className="space-y-8 p-4 md:p-8">
+    <div className="space-y-8 p-4 md:p-8 text-left">
       {/* Header */}
       <div className="border-b border-[#2A2A2A] pb-6">
         <div className="flex items-center gap-3 mb-2">
@@ -79,7 +77,7 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
             <h1 className="text-2xl md:text-3xl font-display font-extrabold text-white">
               Dashboard Penyewa
             </h1>
-            <p className="text-xs text-[#5A5A5A] mt-0.5 font-mono">
+            <p className="text-xs text-[#808080] mt-0.5 font-mono">
               Kelola semua reservasi dan pantau status sewa Anda
             </p>
           </div>
@@ -90,8 +88,8 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="bg-[#141414] border border-[#2A2A2A] rounded-2xl p-5 hover:border-[#3A3A3A] transition-colors">
           <div className="flex items-center gap-2 mb-3">
-            <CalendarCheck2 className="w-4 h-4 text-[#6B6B6B]" />
-            <span className="text-[10px] font-mono uppercase tracking-wider text-[#5A5A5A]">Total Booking</span>
+            <CalendarCheck2 className="w-4 h-4 text-[#949494]" />
+            <span className="text-[10px] font-mono uppercase tracking-wider text-[#808080]">Total Booking</span>
           </div>
           <p className="text-2xl font-black text-white font-mono">{isLoading ? '—' : totalBookings}</p>
         </div>
@@ -99,7 +97,7 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
         <div className="bg-[#141414] border border-[#2A2A2A] rounded-2xl p-5 hover:border-[#3A3A3A] transition-colors">
           <div className="flex items-center gap-2 mb-3">
             <CheckCircle2 className="w-4 h-4 text-emerald-500/60" />
-            <span className="text-[10px] font-mono uppercase tracking-wider text-[#5A5A5A]">Sewa Aktif</span>
+            <span className="text-[10px] font-mono uppercase tracking-wider text-[#808080]">Sewa Aktif</span>
           </div>
           <p className="text-2xl font-black text-white font-mono">{isLoading ? '—' : activeBookings}</p>
         </div>
@@ -107,15 +105,15 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
         <div className="bg-[#141414] border border-[#2A2A2A] rounded-2xl p-5 hover:border-[#3A3A3A] transition-colors">
           <div className="flex items-center gap-2 mb-3">
             <Clock className="w-4 h-4 text-blue-400/60" />
-            <span className="text-[10px] font-mono uppercase tracking-wider text-[#5A5A5A]">Pending</span>
+            <span className="text-[10px] font-mono uppercase tracking-wider text-[#808080]">Pending</span>
           </div>
           <p className="text-2xl font-black text-white font-mono">{isLoading ? '—' : pendingBookings}</p>
         </div>
 
         <div className="bg-[#141414] border border-[#2A2A2A] rounded-2xl p-5 hover:border-[#3A3A3A] transition-colors">
           <div className="flex items-center gap-2 mb-3">
-            <TrendingUp className="w-4 h-4 text-[#6B6B6B]" />
-            <span className="text-[10px] font-mono uppercase tracking-wider text-[#5A5A5A]">Total Bayar</span>
+            <TrendingUp className="w-4 h-4 text-[#949494]" />
+            <span className="text-[10px] font-mono uppercase tracking-wider text-[#808080]">Total Bayar</span>
           </div>
           <p className="text-lg font-black text-white font-mono truncate">{isLoading ? '—' : formatRupiah(totalSpent)}</p>
         </div>
@@ -126,7 +124,7 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
         {/* Tab Header */}
         <div className="px-6 py-5 border-b border-[#2A2A2A] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <h2 className="text-sm font-sans font-bold text-white uppercase tracking-wider flex items-center gap-2">
-            <CreditCard className="w-4 h-4 text-[#6B6B6B]" />
+            <CreditCard className="w-4 h-4 text-[#949494]" />
             Riwayat Reservasi
           </h2>
 
@@ -143,7 +141,7 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
                 className={`px-3 py-1.5 rounded-lg text-[10px] font-mono uppercase tracking-wider font-bold transition-all cursor-pointer ${
                   tab === t.key
                     ? 'bg-white text-black'
-                    : 'text-[#5A5A5A] hover:text-white hover:bg-white/5'
+                    : 'text-[#808080] hover:text-white hover:bg-white/5'
                 }`}
               >
                 {t.label} ({t.count})
@@ -163,11 +161,11 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
             </div>
           ) : filteredBookings.length === 0 ? (
             <div className="py-16 text-center">
-              <div className="w-12 h-12 bg-[#1C1C1C] border border-[#2A2A2A] rounded-full flex items-center justify-center text-[#5A5A5A] mx-auto mb-4">
+              <div className="w-12 h-12 bg-[#1C1C1C] border border-[#2A2A2A] rounded-full flex items-center justify-center text-[#808080] mx-auto mb-4">
                 <AlertCircle className="w-6 h-6" />
               </div>
               <p className="text-sm font-bold text-white">Tidak ada data</p>
-              <p className="text-xs text-[#5A5A5A] mt-1">
+              <p className="text-xs text-[#808080] mt-1">
                 {tab === 'all'
                   ? 'Anda belum memiliki riwayat reservasi.'
                   : `Tidak ada booking berstatus "${tab}".`}
@@ -190,7 +188,7 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
                   <div className="min-w-0">
                     {/* Status + Code */}
                     <div className="flex items-center gap-2 flex-wrap mb-1.5">
-                      <span className="text-[9px] font-mono bg-[#141414] text-[#6B6B6B] px-2 py-0.5 rounded font-bold uppercase tracking-wide border border-[#2A2A2A]">
+                      <span className="text-[9px] font-mono bg-[#141414] text-[#949494] px-2 py-0.5 rounded font-bold uppercase tracking-wide border border-[#2A2A2A]">
                         {book.id.slice(0, 12).toUpperCase()}
                       </span>
                       {book.status === 'Pending' ? (
@@ -210,7 +208,7 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
 
                     <h4 className="text-sm font-bold text-white truncate max-w-[280px]">{book.kostName}</h4>
 
-                    <div className="flex flex-wrap gap-x-5 gap-y-1 mt-2 text-[11px] text-[#5A5A5A] font-mono">
+                    <div className="flex flex-wrap gap-x-5 gap-y-1 mt-2 text-[11px] text-[#808080] font-mono">
                       <span className="flex items-center gap-1">
                         <Clock className="w-3 h-3" /> {book.duration} Bulan
                       </span>
@@ -227,7 +225,7 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
                 {/* Right: Price + Cancel */}
                 <div className="w-full md:w-auto pt-3 md:pt-0 border-t md:border-t-0 border-[#2A2A2A] flex items-center justify-between md:flex-col md:items-end gap-2">
                   <div className="text-right">
-                    <p className="text-[10px] text-[#5A5A5A] font-mono">Total Invoice</p>
+                    <p className="text-[10px] text-[#808080] font-mono">Total Invoice</p>
                     <p className="text-base font-extrabold text-white font-mono">{formatRupiah(book.totalPrice)}</p>
                   </div>
 

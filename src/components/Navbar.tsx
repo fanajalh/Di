@@ -4,16 +4,9 @@ import {
   Search, 
   UserCheck, 
   Grid, 
-  Bell, 
   User, 
   Shield, 
   LogOut,
-  Sparkles,
-  MessageSquare,
-  CreditCard,
-  CheckCircle2,
-  Trash2,
-  CheckCheck,
   ChevronDown
 } from 'lucide-react';
 import { useSession } from './AuthContext';
@@ -28,8 +21,6 @@ export default function Navbar({ currentView, onNavigate, pendingCount }: Navbar
   const { session, signOut, signIn } = useSession();
   
   const [showProfileMenu, setShowProfileMenu] = useState(false);
-  
-  const notifRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
 
   // Close dropdowns on outside clicks
@@ -60,7 +51,7 @@ export default function Navbar({ currentView, onNavigate, pendingCount }: Navbar
               <span className="text-xl font-display font-black tracking-widest text-white font-display">
                 Di
               </span>
-              <span className="hidden sm:block text-[9px] font-mono text-[#5A5A5A] uppercase tracking-widest">Premium Living</span>
+              <span className="hidden sm:block text-[9px] font-mono text-[#808080] uppercase tracking-widest">Premium Living</span>
             </div>
           </button>
 
@@ -73,7 +64,7 @@ export default function Navbar({ currentView, onNavigate, pendingCount }: Navbar
               className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer border ${
                 currentView === 'catalog' 
                   ? 'bg-white/10 text-white border-[#3A3A3A]' 
-                  : 'text-[#6B6B6B] hover:text-white border-transparent hover:bg-white/5'
+                  : 'text-[#949494] hover:text-white border-transparent hover:bg-white/5'
               }`}
             >
               <Search className="w-3.5 h-3.5" />
@@ -88,7 +79,7 @@ export default function Navbar({ currentView, onNavigate, pendingCount }: Navbar
                 className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer relative border ${
                   currentView === 'buyer-dashboard'
                     ? 'bg-white/10 text-white border-[#3A3A3A]'
-                    : 'text-[#6B6B6B] hover:text-white border-transparent hover:bg-white/5'
+                    : 'text-[#949494] hover:text-white border-transparent hover:bg-white/5'
                 }`}
               >
                 <UserCheck className="w-3.5 h-3.5" />
@@ -96,7 +87,7 @@ export default function Navbar({ currentView, onNavigate, pendingCount }: Navbar
               </button>
             )}
 
-            {/* Dashboard Owner tab - only visible or customized based on account role */}
+            {/* Dashboard Owner tab */}
             {session?.user?.role === 'Owner' && (
               <button
                 id="nav-dashboard"
@@ -104,7 +95,7 @@ export default function Navbar({ currentView, onNavigate, pendingCount }: Navbar
                 className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer relative border ${
                   currentView === 'dashboard'
                     ? 'bg-white text-black border-white shadow-md'
-                    : 'bg-[#1C1C1C] border border-[#2A2A2A] text-[#8A8A8A] hover:bg-[#2A2A2A] hover:text-white'
+                    : 'bg-[#1C1C1C] border border-[#2A2A2A] text-[#A3A3A3] hover:bg-[#2A2A2A] hover:text-white'
                 }`}
               >
                 <Grid className="w-3.5 h-3.5" />
@@ -120,7 +111,7 @@ export default function Navbar({ currentView, onNavigate, pendingCount }: Navbar
             {/* Divider */}
             <div className="w-px h-6 bg-[#2A2A2A] mx-1 hidden sm:block"></div>
 
-            {/* Profile Avatar session check dropdown */}
+            {/* Profile Avatar dropdown */}
             <div className="relative" ref={profileRef}>
               {session ? (
                 <button
@@ -134,7 +125,7 @@ export default function Navbar({ currentView, onNavigate, pendingCount }: Navbar
                     referrerPolicy="no-referrer"
                     className="w-7 h-7 object-cover rounded-lg border border-[#2A2A2A] shadow"
                   />
-                  <ChevronDown className={`w-3.5 h-3.5 text-[#5A5A5A] transition-transform ${showProfileMenu ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-3.5 h-3.5 text-[#808080] transition-transform ${showProfileMenu ? 'rotate-180' : ''}`} />
                 </button>
               ) : (
                 <button
@@ -149,10 +140,10 @@ export default function Navbar({ currentView, onNavigate, pendingCount }: Navbar
                 <div className="absolute right-0 mt-2 w-52 bg-[#141414] border border-[#2A2A2A] rounded-xl shadow-2xl overflow-hidden z-50 text-left animate-slide-in">
                   <div className="px-4 py-3 bg-[#0A0A0A] border-b border-[#2A2A2A]">
                     <p className="text-xs font-semibold text-white truncate">{session.user.name}</p>
-                    <p className="text-[10px] font-mono text-[#5A5A5A] truncate mt-0.5">{session.user.email}</p>
+                    <p className="text-[10px] font-mono text-[#808080] truncate mt-0.5">{session.user.email}</p>
                   </div>
                   
-                  <div className="p-1.5 space-y-0.5 text-xs text-[#8A8A8A]">
+                  <div className="p-1.5 space-y-0.5 text-xs text-[#A3A3A3]">
                     <button
                       onClick={() => {
                         onNavigate('profile');
@@ -160,14 +151,13 @@ export default function Navbar({ currentView, onNavigate, pendingCount }: Navbar
                       }}
                       className="w-full text-left px-3 py-2 hover:bg-white/5 rounded-lg flex items-center gap-2 cursor-pointer"
                     >
-                      <User className="w-4 h-4 text-[#6B6B6B]" />
+                      <User className="w-4 h-4 text-[#949494]" />
                       <span>Profil Saya</span>
                     </button>
                     
                     {/* Switch role demo helper */}
                     <button
                       onClick={() => {
-                        // toggle between role simulated in google vs github provider login
                         if (session.user.role === 'User') {
                           signIn('ahmad.gede@owner.id', '', 'credentials');
                         } else {
@@ -175,13 +165,13 @@ export default function Navbar({ currentView, onNavigate, pendingCount }: Navbar
                         }
                         setShowProfileMenu(false);
                       }}
-                      className="w-full text-left px-3 py-2 hover:bg-white/5 rounded-lg flex items-center justify-between cursor-pointer text-[#6B6B6B] group"
+                      className="w-full text-left px-3 py-2 hover:bg-white/5 rounded-lg flex items-center justify-between cursor-pointer text-[#949494] group"
                     >
                       <div className="flex items-center gap-2">
-                        <Shield className="w-4 h-4 text-[#5A5A5A]" />
+                        <Shield className="w-4 h-4 text-[#808080]" />
                         <span className="text-[11px]">Ganti Akun Demo</span>
                       </div>
-                      <span className="text-[9px] font-mono px-1.5 bg-white/5 rounded text-[#8A8A8A]">{session.user.role === 'User' ? 'Owner' : 'Tenant'}</span>
+                      <span className="text-[9px] font-mono px-1.5 bg-white/5 rounded text-[#A3A3A3]">{session.user.role === 'User' ? 'Owner' : 'Tenant'}</span>
                     </button>
                     
                     <div className="w-full h-px bg-[#2A2A2A] my-1"></div>
@@ -191,7 +181,7 @@ export default function Navbar({ currentView, onNavigate, pendingCount }: Navbar
                         signOut();
                         setShowProfileMenu(false);
                       }}
-                      className="w-full text-left px-3 py-2 hover:bg-white/5 text-[#8A8A8A] hover:text-white rounded-lg flex items-center gap-2 cursor-pointer"
+                      className="w-full text-left px-3 py-2 hover:bg-white/5 text-[#A3A3A3] hover:text-white rounded-lg flex items-center gap-2 cursor-pointer"
                     >
                       <LogOut className="w-4 h-4" />
                       <span>Logout Sesi</span>

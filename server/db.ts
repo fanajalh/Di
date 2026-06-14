@@ -15,7 +15,10 @@ const pool = new Pool({
   connectionString,
   ssl: {
     rejectUnauthorized: false // Required for Neon DB
-  }
+  },
+  max: 20,                  // Maximum number of connections in the pool
+  idleTimeoutMillis: 30000, // Close idle connections after 30 seconds
+  connectionTimeoutMillis: 2000 // Return error if connection takes more than 2 seconds
 });
 
 // Provide a getter so we can use the pool easily
@@ -86,6 +89,15 @@ export async function initDb() {
         image TEXT NOT NULL,
         "order" INTEGER DEFAULT 0
       );
+
+      -- Create indexes to make data retrieval extremely fast
+      CREATE UNIQUE INDEX IF NOT EXISTS idx_users_email ON users(email);
+      CREATE INDEX IF NOT EXISTS idx_otps_email_otp ON otps(email, otp);
+      CREATE INDEX IF NOT EXISTS idx_kosts_owner_id ON kosts("ownerId");
+      CREATE INDEX IF NOT EXISTS idx_bookings_user_date ON bookings("userId", "bookingDate" DESC);
+      CREATE INDEX IF NOT EXISTS idx_bookings_kost_id ON bookings("kostId");
+      CREATE INDEX IF NOT EXISTS idx_bookings_date ON bookings("bookingDate" DESC);
+      CREATE INDEX IF NOT EXISTS idx_hero_banners_order ON hero_banners("order" ASC, id ASC);
     `);
     
     // Auto-migrate new column if it doesn't exist

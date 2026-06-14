@@ -81,31 +81,31 @@ export default function BookingPage({ kost, onBack, onConfirm }: BookingPageProp
         <div className="relative z-10">
           <button 
             onClick={onBack}
-            className="text-[#6B6B6B] hover:text-white flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors mb-12"
+            className="text-[#949494] hover:text-white flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors mb-12"
           >
             <ArrowLeft className="w-4 h-4" /> Batal & Kembali
           </button>
 
           <h2 className="text-3xl font-black tracking-tight mb-8">
-            Ringkasan <br/><span className="text-[#5A5A5A]">Reservasi</span>
+            Ringkasan <br/><span className="text-[#808080]">Reservasi</span>
           </h2>
 
           <div className="rounded-2xl overflow-hidden border border-[#2A2A2A] mb-6">
             <img src={kost.image} alt={kost.name} className="w-full h-48 object-cover grayscale-[20%]" referrerPolicy="no-referrer" />
             <div className="p-5 bg-[#0A0A0A]">
-              <div className="text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-1.5">{kost.type} • {kost.roomClass}</div>
+              <div className="text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-1.5">{kost.type} • {kost.roomClass}</div>
               <h3 className="font-bold text-lg leading-tight mb-1">{kost.name}</h3>
-              <p className="text-[#6B6B6B] text-xs">{kost.address}</p>
+              <p className="text-[#949494] text-xs">{kost.address}</p>
             </div>
           </div>
 
           <div className="space-y-4 pt-6 border-t border-[#1C1C1C]">
-            <div className="flex items-center gap-3 text-sm text-[#8A8A8A]">
-              <ShieldCheck className="w-5 h-5 text-[#5A5A5A]" />
+            <div className="flex items-center gap-3 text-sm text-[#A3A3A3]">
+              <ShieldCheck className="w-5 h-5 text-[#808080]" />
               Pembayaran aman & terenkripsi
             </div>
-            <div className="flex items-center gap-3 text-sm text-[#8A8A8A]">
-              <CheckCircle2 className="w-5 h-5 text-[#5A5A5A]" />
+            <div className="flex items-center gap-3 text-sm text-[#A3A3A3]">
+              <CheckCircle2 className="w-5 h-5 text-[#808080]" />
               Pembatalan gratis 24 jam pertama
             </div>
           </div>
@@ -117,7 +117,7 @@ export default function BookingPage({ kost, onBack, onConfirm }: BookingPageProp
         <div className="max-w-2xl mx-auto">
           
           <div className="mb-12">
-            <p className="text-[#5A5A5A] font-mono text-[10px] tracking-widest uppercase mb-3">Langkah Terakhir</p>
+            <p className="text-[#808080] font-mono text-[10px] tracking-widest uppercase mb-3">Langkah Terakhir</p>
             <h1 className="text-4xl md:text-5xl font-light tracking-tight">
               Lengkapi Data <br/><span className="font-bold">Penghuni.</span>
             </h1>
@@ -131,24 +131,24 @@ export default function BookingPage({ kost, onBack, onConfirm }: BookingPageProp
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">Nama Lengkap Sesuai KTP</label>
+                  <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">Nama Lengkap Sesuai KTP</label>
                   <input
                     type="text"
                     required
                     value={bookingName}
                     onChange={(e) => setBookingName(e.target.value)}
-                    className="w-full bg-transparent border-b border-[#2A2A2A] focus:border-white px-0 py-3 text-sm text-white focus:outline-none transition-colors placeholder:text-[#3A3A3A]"
+                    className="w-full bg-transparent border-b border-[#2A2A2A] focus:border-white px-0 py-3 text-sm text-white focus:outline-none transition-colors placeholder:text-[#606060]"
                     placeholder="Contoh: Arfan Alamsyah"
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">No Handphone / WhatsApp</label>
+                  <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">No Handphone / WhatsApp</label>
                   <input
                     type="text"
                     required
                     value={bookingPhone}
                     onChange={(e) => setBookingPhone(e.target.value)}
-                    className="w-full bg-transparent border-b border-[#2A2A2A] focus:border-white px-0 py-3 text-sm text-white focus:outline-none transition-colors placeholder:text-[#3A3A3A]"
+                    className="w-full bg-transparent border-b border-[#2A2A2A] focus:border-white px-0 py-3 text-sm text-white focus:outline-none transition-colors placeholder:text-[#606060]"
                     placeholder="081234567890"
                   />
                 </div>
@@ -161,7 +161,7 @@ export default function BookingPage({ kost, onBack, onConfirm }: BookingPageProp
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">Mulai Menempati</label>
+                  <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">Mulai Menempati</label>
                   <input
                     type="date"
                     required
@@ -171,7 +171,7 @@ export default function BookingPage({ kost, onBack, onConfirm }: BookingPageProp
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest mb-2">Durasi Sewa</label>
+                  <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-2">Durasi Sewa</label>
                   <div className="relative">
                     <select
                       value={bookingDuration}
@@ -183,7 +183,7 @@ export default function BookingPage({ kost, onBack, onConfirm }: BookingPageProp
                       <option value={6} className="bg-[#141414]">6 Bulan (Diskon 10%)</option>
                       <option value={12} className="bg-[#141414]">12 Bulan (Diskon 10%)</option>
                     </select>
-                    <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-[#5A5A5A] pointer-events-none rotate-90" />
+                    <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-[#808080] pointer-events-none rotate-90" />
                   </div>
                 </div>
               </div>
@@ -206,8 +206,8 @@ export default function BookingPage({ kost, onBack, onConfirm }: BookingPageProp
                     onClick={() => setBookingPayment(pay.val)}
                     className={`py-4 px-5 rounded-xl border text-sm font-medium text-left transition-all ${
                       bookingPayment === pay.val
-                        ? 'bg-[#1C1C1C] text-white border-[#5A5A5A]'
-                        : 'bg-transparent text-[#6B6B6B] border-[#1A1A1C] hover:border-[#2A2A2A] hover:bg-[#141414]'
+                        ? 'bg-[#1C1C1C] text-white border-[#808080]'
+                        : 'bg-transparent text-[#949494] border-[#1A1A1C] hover:border-[#2A2A2A] hover:bg-[#141414]'
                     }`}
                   >
                     {pay.label}
@@ -218,7 +218,7 @@ export default function BookingPage({ kost, onBack, onConfirm }: BookingPageProp
 
             {/* Total Calculation & Submit */}
             <div className="bg-[#141414] border border-[#1A1A1C] rounded-2xl p-6 md:p-8 mt-12 space-y-4">
-              <div className="flex justify-between items-center text-sm text-[#8A8A8A]">
+              <div className="flex justify-between items-center text-sm text-[#A3A3A3]">
                 <span>Biaya Sewa ({bookingDuration} bulan)</span>
                 <span className="font-mono">{formatRupiah(calculatedTotal)}</span>
               </div>
@@ -230,7 +230,7 @@ export default function BookingPage({ kost, onBack, onConfirm }: BookingPageProp
               )}
               <div className="border-t border-[#2A2A2A] pt-4 mt-4 flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div>
-                  <p className="text-[10px] text-[#5A5A5A] font-mono uppercase tracking-widest mb-1">Total Pembayaran</p>
+                  <p className="text-[10px] text-[#808080] font-mono uppercase tracking-widest mb-1">Total Pembayaran</p>
                   <p className="text-3xl font-black tracking-tight">{formatRupiah(finalTotal)}</p>
                 </div>
                 <button

@@ -106,14 +106,14 @@ export default function VerifyOTP({ onNavigate }: VerifyOTPProps) {
             Akun <br />
             <span className="font-semibold text-[#B0B0B0]">Terjamin.</span>
           </h1>
-          <p className="text-sm text-[#8A8A8A] leading-relaxed max-w-md font-light">
+          <p className="text-sm text-[#A3A3A3] leading-relaxed max-w-md font-light">
             Pulihkan akses ke akun Di Anda dengan aman menggunakan verifikasi OTP instan. Harap simpan informasi sandi baru Anda secara pribadi.
           </p>
         </div>
 
         {/* Empty footer space on left side for balancing split layout */}
         <div className="relative z-10">
-          <p className="text-[10px] font-mono text-[#5A5A5A] uppercase tracking-widest">© 2026 Di INC.</p>
+          <p className="text-[10px] font-mono text-[#808080] uppercase tracking-widest">© 2026 Di INC.</p>
         </div>
       </div>
 
@@ -140,7 +140,7 @@ export default function VerifyOTP({ onNavigate }: VerifyOTPProps) {
             <h2 className="text-3xl font-light text-white tracking-tight mb-2 uppercase font-display">
               Pemulihan Akun
             </h2>
-            <p className="text-xs text-[#8A8A8A] font-light">
+            <p className="text-xs text-[#A3A3A3] font-light">
               {step === 'request' 
                 ? 'Masukkan email Anda untuk menerima kode verifikasi.' 
                 : 'Masukkan OTP yang dikirim dan sandi baru Anda.'}
@@ -148,14 +148,14 @@ export default function VerifyOTP({ onNavigate }: VerifyOTPProps) {
           </div>
 
           {error && (
-            <div className="bg-[#1C1C1C] border border-[#3A3A3A] text-[#B0B0B0] text-xs p-3.5 rounded-xl mb-6 text-center">
+            <div className="bg-[#1C1C1C] border border-[#606060] text-[#B0B0B0] text-xs p-3.5 rounded-xl mb-6 text-center">
               {error}
             </div>
           )}
           
           {message && (
             <div className="bg-[#141414] border border-[#2A2A2A] text-white text-xs p-3.5 rounded-xl mb-6 text-center flex items-center justify-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#8A8A8A]" /> {message}
+              <CheckCircle2 className="w-4 h-4 text-[#A3A3A3]" /> {message}
             </div>
           )}
 
@@ -163,15 +163,15 @@ export default function VerifyOTP({ onNavigate }: VerifyOTPProps) {
             <form onSubmit={handleRequestOTP} className="space-y-5">
               {/* Email Input */}
               <div className="space-y-2">
-                <div className="flex items-center bg-[#141414] border border-[#2A2A2A] rounded-xl px-4 focus-within:border-[#5A5A5A] transition-colors">
-                  <Mail className="w-4 h-4 text-[#5A5A5A] shrink-0" />
+                <div className="flex items-center bg-[#141414] border border-[#2A2A2A] rounded-xl px-4 focus-within:border-[#808080] transition-colors">
+                  <Mail className="w-4 h-4 text-[#808080] shrink-0" />
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     placeholder="Email Address"
-                    className="flex-1 bg-transparent py-4 px-4 text-sm text-white placeholder:text-[#3A3A3A] outline-none font-light"
+                    className="flex-1 bg-transparent py-4 px-4 text-sm text-white placeholder:text-[#606060] outline-none font-light"
                   />
                 </div>
               </div>
@@ -201,26 +201,26 @@ export default function VerifyOTP({ onNavigate }: VerifyOTPProps) {
                   onChange={(e) => setOtp(e.target.value.replace(/[^0-9]/g, '').slice(0, 6))}
                   required
                   placeholder="KODE OTP (6-DIGIT)"
-                  className="w-full bg-[#141414] border border-[#2A2A2A] rounded-xl py-4 px-4 text-center text-xl tracking-[0.5em] text-white placeholder:text-[#3A3A3A] focus:outline-none focus:border-[#5A5A5A] outline-none font-light"
+                  className="w-full bg-[#141414] border border-[#2A2A2A] rounded-xl py-4 px-4 text-center text-xl tracking-[0.5em] text-white placeholder:text-[#606060] focus:outline-none focus:border-[#808080] outline-none font-light"
                 />
               </div>
               
               {/* New Password Input */}
               <div className="space-y-2">
-                <div className="flex items-center bg-[#141414] border border-[#2A2A2A] rounded-xl px-4 focus-within:border-[#5A5A5A] transition-colors">
-                  <Lock className="w-4 h-4 text-[#5A5A5A] shrink-0" />
+                <div className="flex items-center bg-[#141414] border border-[#2A2A2A] rounded-xl px-4 focus-within:border-[#808080] transition-colors">
+                  <Lock className="w-4 h-4 text-[#808080] shrink-0" />
                   <input
                     type={showPassword ? 'text' : 'password'}
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     required
                     placeholder="Password Baru (Min. 6 karakter)"
-                    className="flex-1 bg-transparent py-4 px-4 text-sm text-white placeholder:text-[#3A3A3A] outline-none font-light"
+                    className="flex-1 bg-transparent py-4 px-4 text-sm text-white placeholder:text-[#606060] outline-none font-light"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="text-[#5A5A5A] hover:text-white transition-colors cursor-pointer"
+                    className="text-[#808080] hover:text-white transition-colors cursor-pointer"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -246,7 +246,7 @@ export default function VerifyOTP({ onNavigate }: VerifyOTPProps) {
 
           {/* Footer Navigation */}
           <div className="mt-8 text-center border-t border-[#2A2A2A] pt-6">
-            <p className="text-xs text-[#5A5A5A] font-mono tracking-wider uppercase">
+            <p className="text-xs text-[#808080] font-mono tracking-wider uppercase">
               Ingat password Anda?{' '}
               <button 
                 type="button"
