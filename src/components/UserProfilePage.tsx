@@ -306,13 +306,13 @@ export default function UserProfilePage({ bookings }: UserProfilePageProps) {
                         </div>
 
                         <h4 className="font-bold text-white text-xs mt-1 truncate max-w-[240px]">{book.kostName}</h4>
-                        <p className="text-[10px] text-[#808080] font-mono mt-0.5">Durasi: {book.duration} Bulan • Mulai: {book.startDate}</p>
+                        <p className="text-[10px] text-[#808080] font-mono mt-0.5">Jadwal Survey: {book.startDate} @ {book.surveyTime || '—'}</p>
                       </div>
                     </div>
 
                     <div className="sm:text-right flex sm:flex-col justify-between items-center sm:items-end border-t sm:border-y-0 border-[#2A2A2A] pt-2 sm:pt-0">
-                      <span className="text-[10px] text-[#808080] font-mono">Total Invoice</span>
-                      <span className="font-mono font-bold text-xs text-white mt-0.5">{formatRupiah(book.totalPrice)}</span>
+                      <span className="text-[10px] text-[#808080] font-mono">Biaya Survey</span>
+                      <span className="font-mono font-bold text-xs text-emerald-400 mt-0.5">Gratis</span>
                     </div>
                   </div>
                 ))}

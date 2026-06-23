@@ -30,9 +30,6 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
   const activeBookings = bookings.filter(b => b.status === 'Disetujui').length;
   const pendingBookings = bookings.filter(b => b.status === 'Pending').length;
   const rejectedBookings = bookings.filter(b => b.status === 'Ditolak').length;
-  const totalSpent = bookings
-    .filter(b => b.status === 'Disetujui')
-    .reduce((sum, b) => sum + b.totalPrice, 0);
 
   // Filtered bookings
   const filteredBookings = bookings.filter(b => {
@@ -84,12 +81,11 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
         </div>
       </div>
 
-      {/* Stats Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="bg-[#141414] border border-[#2A2A2A] rounded-2xl p-5 hover:border-[#3A3A3A] transition-colors">
           <div className="flex items-center gap-2 mb-3">
             <CalendarCheck2 className="w-4 h-4 text-[#949494]" />
-            <span className="text-[10px] font-mono uppercase tracking-wider text-[#808080]">Total Booking</span>
+            <span className="text-[10px] font-mono uppercase tracking-wider text-[#808080]">Total Survey</span>
           </div>
           <p className="text-2xl font-black text-white font-mono">{isLoading ? '—' : totalBookings}</p>
         </div>
@@ -97,7 +93,7 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
         <div className="bg-[#141414] border border-[#2A2A2A] rounded-2xl p-5 hover:border-[#3A3A3A] transition-colors">
           <div className="flex items-center gap-2 mb-3">
             <CheckCircle2 className="w-4 h-4 text-emerald-500/60" />
-            <span className="text-[10px] font-mono uppercase tracking-wider text-[#808080]">Sewa Aktif</span>
+            <span className="text-[10px] font-mono uppercase tracking-wider text-[#808080]">Disetujui</span>
           </div>
           <p className="text-2xl font-black text-white font-mono">{isLoading ? '—' : activeBookings}</p>
         </div>
@@ -113,9 +109,9 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
         <div className="bg-[#141414] border border-[#2A2A2A] rounded-2xl p-5 hover:border-[#3A3A3A] transition-colors">
           <div className="flex items-center gap-2 mb-3">
             <TrendingUp className="w-4 h-4 text-[#949494]" />
-            <span className="text-[10px] font-mono uppercase tracking-wider text-[#808080]">Total Bayar</span>
+            <span className="text-[10px] font-mono uppercase tracking-wider text-[#808080]">Pembayaran Sewa</span>
           </div>
-          <p className="text-lg font-black text-white font-mono truncate">{isLoading ? '—' : formatRupiah(totalSpent)}</p>
+          <p className="text-sm font-black text-white font-mono truncate">{isLoading ? '—' : 'Bayar di Tempat'}</p>
         </div>
       </div>
 
@@ -128,7 +124,7 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
             Riwayat Reservasi
           </h2>
 
-          <div className="flex flex-wrap items-center gap-1.5 bg-[#0A0A0A] p-1.5 rounded-xl border border-[#2A2A2A]">
+          <div className="flex items-center gap-1.5 bg-[#0A0A0A] p-1.5 rounded-xl border border-[#2A2A2A] overflow-x-auto whitespace-nowrap w-full sm:w-auto">
             {[
               { key: 'all' as const, label: 'Semua', count: totalBookings },
               { key: 'pending' as const, label: 'Pending', count: pendingBookings },
@@ -178,14 +174,14 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
                 className="bg-[#0A0A0A] border border-[#2A2A2A] hover:border-[#3A3A3A] rounded-xl p-4 md:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 transition-colors"
               >
                 {/* Left: Image + Info */}
-                <div className="flex items-start gap-4 flex-1 min-w-0">
+                <div className="flex items-start gap-4 flex-1 min-w-0 w-full">
                   <img
                     src={book.kostImage}
                     alt={book.kostName}
                     referrerPolicy="no-referrer"
                     className="w-14 h-14 md:w-16 md:h-16 object-cover rounded-xl border border-[#2A2A2A] shrink-0"
                   />
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1 w-full">
                     {/* Status + Code */}
                     <div className="flex items-center gap-2 flex-wrap mb-1.5">
                       <span className="text-[9px] font-mono bg-[#141414] text-[#949494] px-2 py-0.5 rounded font-bold uppercase tracking-wide border border-[#2A2A2A]">
@@ -206,14 +202,14 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
                       )}
                     </div>
 
-                    <h4 className="text-sm font-bold text-white truncate max-w-[280px]">{book.kostName}</h4>
+                    <h4 className="text-sm font-bold text-white truncate">{book.kostName}</h4>
 
-                    <div className="flex flex-wrap gap-x-5 gap-y-1 mt-2 text-[11px] text-[#808080] font-mono">
+                    <div className="flex flex-col sm:flex-row sm:flex-wrap gap-x-5 gap-y-1.5 mt-2 text-[11px] text-[#808080] font-mono">
                       <span className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" /> {book.duration} Bulan
+                        <Clock className="w-3 h-3" /> Jam Survey: {book.surveyTime || '—'}
                       </span>
                       <span className="flex items-center gap-1">
-                        <CalendarCheck2 className="w-3 h-3" /> Mulai: {book.startDate}
+                        <CalendarCheck2 className="w-3 h-3" /> Tanggal Survey: {book.startDate}
                       </span>
                       <span className="flex items-center gap-1">
                         <CreditCard className="w-3 h-3" /> {book.paymentMethod}
@@ -225,8 +221,8 @@ export default function DashboardBuyer({ bookings, onCancelBooking, isLoading }:
                 {/* Right: Price + Cancel */}
                 <div className="w-full md:w-auto pt-3 md:pt-0 border-t md:border-t-0 border-[#2A2A2A] flex items-center justify-between md:flex-col md:items-end gap-2">
                   <div className="text-right">
-                    <p className="text-[10px] text-[#808080] font-mono">Total Invoice</p>
-                    <p className="text-base font-extrabold text-white font-mono">{formatRupiah(book.totalPrice)}</p>
+                    <p className="text-[10px] text-[#808080] font-mono">Biaya Survey</p>
+                    <p className="text-sm font-extrabold text-emerald-400 font-mono">Gratis</p>
                   </div>
 
                   {book.status === 'Pending' && (

@@ -24,6 +24,8 @@ export interface Booking {
   kostImage: string;
   userName: string;
   userPhone: string;
+  userEmail?: string;
+  surveyTime?: string;
   startDate: string;
   duration: number; // in months
   totalPrice: number;
@@ -48,5 +50,44 @@ export interface HeroBanner {
   subtitle: string;
   image: string;
   order: number;
+}
+
+export interface FinancialTransaction {
+  id: number;
+  ownerId?: number;
+  kostId?: string | null;
+  type: 'Income' | 'Expense';
+  amount: number;
+  category: string;
+  description?: string;
+  date: string;
+  createdAt: number;
+}
+
+export interface Promo {
+  id: number;
+  code: string;
+  discountPercent: number;
+  title: string;
+  description?: string;
+  expiresAt: number;
+}
+
+export interface TenantRequest {
+  id: number;
+  userId: number;
+  userName?: string;
+  userPhone?: string;
+  kostId: string;
+  kostName?: string;
+  type: 'Checkout' | 'Extension' | 'RoomChange';
+  details: {
+    checkoutDate?: string;
+    months?: number;
+    targetRoom?: string;
+    reason?: string;
+  };
+  status: 'Pending' | 'Approved' | 'Rejected';
+  createdAt: number;
 }
 

@@ -153,7 +153,7 @@ export default function FilterSidebar({ filters, onFilterChange, availableLocati
           
           <AnimatePresence>
             {openDropdown === 'class' && (
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute top-full left-0 mt-3 w-56 bg-[#141414] border border-[#2A2A2A] rounded-2xl shadow-2xl p-3 z-50">
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute top-full right-0 sm:right-auto sm:left-0 mt-3 w-56 bg-[#141414] border border-[#2A2A2A] rounded-2xl shadow-2xl p-3 z-50">
                 <div className="flex flex-col gap-1.5">
                   {roomClasses.map((cl) => (
                     <button key={cl} onClick={() => { updateFilter({ roomClass: cl }); setOpenDropdown(null); }} className={`text-left text-sm px-4 py-2.5 rounded-xl transition-all flex items-center justify-between cursor-pointer border ${filters.roomClass === cl ? 'bg-white/10 text-white border-[#606060]' : 'text-[#949494] hover:text-white border-transparent hover:bg-white/5'}`}>
@@ -182,7 +182,7 @@ export default function FilterSidebar({ filters, onFilterChange, availableLocati
           
           <AnimatePresence>
             {openDropdown === 'price' && (
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute top-full left-0 sm:-translate-x-1/2 sm:ml-16 mt-3 w-72 bg-[#141414] border border-[#2A2A2A] rounded-2xl shadow-2xl p-6 z-50">
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute top-full right-0 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 sm:ml-16 mt-3 w-72 bg-[#141414] border border-[#2A2A2A] rounded-2xl shadow-2xl p-6 z-50">
                 <div className="space-y-4">
                   <div className="flex items-center justify-between text-xs text-[#808080] font-mono">
                     <span>{formatRupiahShort(filters.minPrice)}</span>

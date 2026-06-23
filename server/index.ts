@@ -3,6 +3,7 @@ import cors from 'cors';
 import { initDb } from './db.js';
 import authRoutes from './auth.js';
 import dataRoutes from './api.js';
+import chatRoutes from './chats.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -16,11 +17,13 @@ initDb().catch(console.error);
 
 app.use('/api/auth', authRoutes);
 app.use('/api/data', dataRoutes);
+app.use('/api/chats', chatRoutes);
 
 // Vercel Serverless Fallback Routes
 // In serverless environments with rewrites, req.url might be stripped of /api
 app.use('/auth', authRoutes);
 app.use('/data', dataRoutes);
+app.use('/chats', chatRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'KOSTIN Backend is running' });

@@ -42,7 +42,7 @@ export default function KostCard({ kost, onSelect }: KostCardProps) {
       className="group bg-[#141414] rounded-xl border border-[#2A2A2A] hover:border-[#3A3A3A] overflow-hidden cursor-pointer transition-all duration-300 flex flex-col sm:flex-row h-auto sm:h-48 text-left"
     >
       {/* Image Section (Left/Top) */}
-      <div className="relative w-full h-48 sm:w-1/3 sm:h-full shrink-0 overflow-hidden">
+      <div className="relative w-full h-32 sm:w-1/3 sm:h-full shrink-0 overflow-hidden">
         <img
           src={optimizeImageUrl(kost.image, 400, 60)}
           alt={kost.name}
@@ -56,11 +56,11 @@ export default function KostCard({ kost, onSelect }: KostCardProps) {
         <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-[#141414]/50 sm:from-transparent via-transparent to-black/30"></div>
         
         {/* Badges */}
-        <div className="absolute top-3 left-3 z-10 flex flex-wrap gap-1.5">
-          <span className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-white/90 text-black shadow-sm">
+        <div className="absolute top-2 left-2 z-10 flex flex-wrap gap-1">
+          <span className="text-[9px] font-medium px-1.5 py-0.5 rounded bg-white/90 text-black shadow-sm">
             {kost.type}
           </span>
-          <span className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-[#0A0A0A]/70 backdrop-blur-md text-[#B0B0B0] border border-[#3A3A3A]">
+          <span className="text-[9px] font-medium px-1.5 py-0.5 rounded bg-[#0A0A0A]/70 backdrop-blur-md text-[#B0B0B0] border border-[#3A3A3A]">
             {kost.roomClass}
           </span>
         </div>

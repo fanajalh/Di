@@ -202,7 +202,7 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
         <div className="font-semibold tracking-[0.25em] text-white text-sm uppercase font-display">
           Di
         </div>
-        <div className="hidden md:flex items-center gap-8 font-medium text-xs tracking-widest uppercase text-[#9A9A9A]">
+        <div className="flex items-center gap-4 md:gap-8 font-medium text-[10px] md:text-xs tracking-widest uppercase text-[#9A9A9A]">
           <button onClick={onExploreClick} className="hover:text-white transition-colors animate-pulse duration-1000 cursor-pointer min-h-[48px] min-w-[48px] flex items-center">Catalog</button>
           <a href="#faq-section" className="hover:text-white transition-colors min-h-[48px] flex items-center">FAQ</a>
           <a href="#download-section" className="hover:text-white transition-colors min-h-[48px] flex items-center">App</a>
@@ -364,7 +364,7 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
                     <button
                       key={idx}
                       onClick={() => setCurrentSlide(idx)}
-                      className="relative p-3 cursor-pointer flex items-center justify-center"
+                      className="relative px-1 py-3 cursor-pointer flex items-center justify-center"
                       title={`Slide ${idx + 1}`}
                       aria-label={`Go to slide ${idx + 1}`}
                     >
@@ -433,7 +433,7 @@ export default function ImmersiveHero({ onExploreClick, featuredKosts, onSelectK
             </button>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-3 lg:gap-6">
             {featuredKosts.map((kost) => (
               <KostCard key={kost.id} kost={kost} onSelect={onSelectKost} />
             ))}

@@ -31,6 +31,7 @@ export default function Register({ onNavigate }: RegisterProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState<'User' | 'Owner'>('User');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -45,7 +46,7 @@ export default function Register({ onNavigate }: RegisterProps) {
       const response = await fetch('/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password, role: 'User' }), // Default to 'User'
+        body: JSON.stringify({ name, email, password, role }),
       });
 
       const data = await response.json();
@@ -225,6 +226,37 @@ export default function Register({ onNavigate }: RegisterProps) {
                     className="text-[#808080] hover:text-white transition-colors cursor-pointer"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </button>
+                </div>
+              </div>
+
+              {/* Role Selection Field */}
+              <div className="space-y-2">
+                <label className="block text-[10px] font-mono text-[#808080] uppercase tracking-widest mb-1">
+                  Tipe Akun
+                </label>
+                <div className="flex gap-4">
+                  <button
+                    type="button"
+                    onClick={() => setRole('User')}
+                    className={`flex-1 py-3 border rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                      role === 'User'
+                        ? 'bg-white text-black border-white shadow-md'
+                        : 'bg-transparent text-[#808080] border-[#2A2A2A] hover:border-[#808080]'
+                    }`}
+                  >
+                    Pencari Kost (Tenant)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setRole('Owner')}
+                    className={`flex-1 py-3 border rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                      role === 'Owner'
+                        ? 'bg-white text-black border-white shadow-md'
+                        : 'bg-transparent text-[#808080] border-[#2A2A2A] hover:border-[#808080]'
+                    }`}
+                  >
+                    Pemilik Kost (Owner)
                   </button>
                 </div>
               </div>

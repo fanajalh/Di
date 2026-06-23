@@ -184,9 +184,9 @@ export default function App() {
       await api.addKost(newKost);
       await refreshData();
       toast.update(tid, { type: 'success', message: `Kost "${newKost.name}" sukses didaftarkan!` });
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      toast.update(tid, { type: 'error', message: 'Gagal menambahkan kost.' });
+      toast.update(tid, { type: 'error', message: err.message || 'Gagal menambahkan kost.' });
     }
   };
 
@@ -197,9 +197,9 @@ export default function App() {
       await api.editKost(updatedKost.id, updatedKost);
       await refreshData();
       toast.update(tid, { type: 'success', message: `Properti "${updatedKost.name}" berhasil diperbarui!` });
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      toast.update(tid, { type: 'error', message: 'Gagal memperbarui properti.' });
+      toast.update(tid, { type: 'error', message: err.message || 'Gagal memperbarui properti.' });
     }
   };
 
@@ -209,9 +209,9 @@ export default function App() {
       await api.deleteKost(id);
       await refreshData();
       toast.update(tid, { type: 'success', message: 'Properti berhasil dihapus.' });
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      toast.update(tid, { type: 'error', message: 'Gagal menghapus properti.' });
+      toast.update(tid, { type: 'error', message: err.message || 'Gagal menghapus properti.' });
     }
   };
 
@@ -418,7 +418,7 @@ export default function App() {
                     ))}
                   </div>
                 ) : (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-6">
                     {filteredKosts.map(kost => (
                       <KostCard 
                         key={kost.id} 
@@ -449,6 +449,7 @@ export default function App() {
             onAddBanner={handleAddBanner}
             onEditBanner={handleEditBanner}
             onDeleteBanner={handleDeleteBanner}
+            onRefreshData={refreshData}
           />
         </div>
       )}
@@ -538,16 +539,16 @@ export default function App() {
                       <h3 className="text-base font-bold text-white mt-2 font-display">{book.kostName}</h3>
                       
                       <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-1 mt-3 text-xs text-[#5A5A5A]">
-                        <p>Kontrak: <strong className="text-[#B0B0B0]">{book.duration} Bulan</strong></p>
-                        <p>Bayar via: <strong className="text-white">{book.paymentMethod}</strong></p>
-                        <p className="col-span-2 sm:col-span-1">Mulai: <strong className="text-[#8A8A8A]">{book.startDate}</strong></p>
+                        <p>Jam Survey: <strong className="text-white">{book.surveyTime || '—'}</strong></p>
+                        <p>Bayar Sewa: <strong className="text-[#B0B0B0]">{book.paymentMethod}</strong></p>
+                        <p className="col-span-2 sm:col-span-1">Tanggal Survey: <strong className="text-[#8A8A8A]">{book.startDate}</strong></p>
                       </div>
                     </div>
                   </div>
 
                   <div className="w-full md:w-auto pt-4 md:pt-0 border-t md:border-t-0 border-[#2A2A2A] flex items-center justify-between md:flex-col md:items-end gap-2 md:gap-1.5 align-middle">
-                    <p className="text-xs text-[#5A5A5A] font-mono">Invoice Dibuat</p>
-                    <p className="text-base font-extrabold text-white font-mono">{formatRupiah(book.totalPrice)}</p>
+                    <p className="text-xs text-[#5A5A5A] font-mono">Biaya Survey</p>
+                    <p className="text-base font-extrabold text-emerald-400 font-mono">Gratis</p>
                     {book.status === 'Pending' && (
                       <p className="text-[10px] text-[#5A5A5A] font-mono animate-pulse">
                         *Anda dapat menyetujui di Owner Panel

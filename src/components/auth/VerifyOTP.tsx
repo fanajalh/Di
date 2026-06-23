@@ -32,7 +32,7 @@ export default function VerifyOTP({ onNavigate }: VerifyOTPProps) {
       
       if (!response.ok) throw new Error('Gagal mengirim OTP');
       
-      setMessage('Kode OTP 6-digit telah dikirim. (Periksa Console Terminal)');
+      setMessage('Kode OTP 6-digit telah dikirim ke email Anda.');
       setStep('verify');
     } catch (err: any) {
       setError(err.message);

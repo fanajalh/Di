@@ -2,6 +2,8 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import jsonwebtoken from 'jsonwebtoken';
 import { getDb } from './db.js';
+import { sendOTPEmail } from './email.js';
+import { requireAuth } from './api.js';
 
 const router = express.Router();
 
@@ -120,11 +122,8 @@ router.post('/forgot-password', async (req, res) => {
     await db.query('DELETE FROM otps WHERE email = $1', [email]);
     await db.query('INSERT INTO otps (email, otp, "expiresAt") VALUES ($1, $2, $3)', [email, otp, expiresAt]);
 
-    // Mock Email sending
-    console.log('\n=======================================');
-    console.log(`✉️ MOCK EMAIL SENT TO: ${email}`);
-    console.log(`🔐 YOUR OTP CODE IS: ${otp}`);
-    console.log('=======================================\n');
+    // Send OTP email via Nodemailer
+    await sendOTPEmail(email, otp);
 
     res.json({ message: 'If email exists, an OTP has been sent.' });
   } catch (error) {
@@ -179,6 +178,60 @@ router.post('/reset-password', async (req, res) => {
     res.json({ message: 'Password reset successful' });
   } catch (error) {
     console.error('Reset password error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Update Profile
+router.put('/profile', requireAuth, async (req: any, res: any) => {
+  try {
+    const userId = req.user.id;
+    const { name, phone, address, bio, image } = req.body;
+    const db = getDb();
+
+    // Build dynamic update query to only update provided fields
+    const fieldsToUpdate: string[] = [];
+    const values: any[] = [];
+    let paramIndex = 1;
+
+    if (name !== undefined) {
+      fieldsToUpdate.push(`name = $${paramIndex++}`);
+      values.push(name);
+    }
+    if (phone !== undefined) {
+      fieldsToUpdate.push(`phone = $${paramIndex++}`);
+      values.push(phone);
+    }
+    if (address !== undefined) {
+      fieldsToUpdate.push(`address = $${paramIndex++}`);
+      values.push(address);
+    }
+    if (bio !== undefined) {
+      fieldsToUpdate.push(`bio = $${paramIndex++}`);
+      values.push(bio);
+    }
+    if (image !== undefined) {
+      fieldsToUpdate.push(`image = $${paramIndex++}`);
+      values.push(image);
+    }
+
+    if (fieldsToUpdate.length === 0) {
+      return res.status(400).json({ error: 'No fields to update' });
+    }
+
+    values.push(userId);
+    const query = `UPDATE users SET ${fieldsToUpdate.join(', ')} WHERE id = $${paramIndex} RETURNING *`;
+    const result = await db.query(query, values);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Omit password from returned profile
+    const { password: _, ...userWithoutPassword } = result.rows[0];
+    res.json(userWithoutPassword);
+  } catch (error) {
+    console.error('Update profile error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });

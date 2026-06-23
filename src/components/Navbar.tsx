@@ -5,9 +5,9 @@ import {
   UserCheck, 
   Grid, 
   User, 
-  Shield, 
   LogOut,
-  ChevronDown
+  ChevronDown,
+  Home
 } from 'lucide-react';
 import { useSession } from './AuthContext';
 
@@ -57,6 +57,20 @@ export default function Navbar({ currentView, onNavigate, pendingCount }: Navbar
 
           {/* Navigation Controls */}
           <div className="flex items-center gap-1.5 sm:gap-3">
+            {/* Beranda (Landing) */}
+            <button
+              id="nav-landing"
+              onClick={() => onNavigate('landing')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer border ${
+                currentView === 'landing' 
+                  ? 'bg-white/10 text-white border-[#3A3A3A]' 
+                  : 'text-[#949494] hover:text-white border-transparent hover:bg-white/5'
+              }`}
+            >
+              <Home className="w-3.5 h-3.5" />
+              <span className="hidden md:inline">Beranda</span>
+            </button>
+
             {/* Find rooms */}
             <button
               id="nav-search"
@@ -72,7 +86,7 @@ export default function Navbar({ currentView, onNavigate, pendingCount }: Navbar
             </button>
 
             {/* My Booking Status / Buyer Dashboard */}
-            {session && session.user.role === 'User' && (
+            {session && (session.user.role === 'User' || session.user.role?.toLowerCase() === 'user') && (
               <button
                 id="nav-buyer-dashboard"
                 onClick={() => onNavigate('buyer-dashboard')}
@@ -83,12 +97,12 @@ export default function Navbar({ currentView, onNavigate, pendingCount }: Navbar
                 }`}
               >
                 <UserCheck className="w-3.5 h-3.5" />
-                <span>Dashboard</span>
+                <span className="hidden md:inline">Dashboard</span>
               </button>
             )}
 
             {/* Dashboard Owner tab */}
-            {session?.user?.role === 'Owner' && (
+            {(session?.user?.role === 'Owner' || session?.user?.role?.toLowerCase() === 'owner') && (
               <button
                 id="nav-dashboard"
                 onClick={() => onNavigate('dashboard')}
@@ -99,7 +113,7 @@ export default function Navbar({ currentView, onNavigate, pendingCount }: Navbar
                 }`}
               >
                 <Grid className="w-3.5 h-3.5" />
-                <span>Owner Panel</span>
+                <span className="hidden md:inline">Owner Panel</span>
                 {pendingCount > 0 && (
                   <span className="absolute -top-1 -right-1 h-4 w-4 bg-white text-[9px] text-black font-mono font-bold flex items-center justify-center rounded-full">
                     {pendingCount}
@@ -153,25 +167,6 @@ export default function Navbar({ currentView, onNavigate, pendingCount }: Navbar
                     >
                       <User className="w-4 h-4 text-[#949494]" />
                       <span>Profil Saya</span>
-                    </button>
-                    
-                    {/* Switch role demo helper */}
-                    <button
-                      onClick={() => {
-                        if (session.user.role === 'User') {
-                          signIn('ahmad.gede@owner.id', '', 'credentials');
-                        } else {
-                          signIn('arfan.7ovo@gmail.com', '', 'credentials');
-                        }
-                        setShowProfileMenu(false);
-                      }}
-                      className="w-full text-left px-3 py-2 hover:bg-white/5 rounded-lg flex items-center justify-between cursor-pointer text-[#949494] group"
-                    >
-                      <div className="flex items-center gap-2">
-                        <Shield className="w-4 h-4 text-[#808080]" />
-                        <span className="text-[11px]">Ganti Akun Demo</span>
-                      </div>
-                      <span className="text-[9px] font-mono px-1.5 bg-white/5 rounded text-[#A3A3A3]">{session.user.role === 'User' ? 'Owner' : 'Tenant'}</span>
                     </button>
                     
                     <div className="w-full h-px bg-[#2A2A2A] my-1"></div>
